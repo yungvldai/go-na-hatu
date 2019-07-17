@@ -1,28 +1,32 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <nav-bar />
+    <app-loading v-if="loading" />
+    <app-content v-else />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NavBar from '@/components/NavBar.vue';
+import AppContent from '@/components/AppContent.vue';
+import AppLoading from '@/components/AppLoading.vue';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    NavBar,
+    AppContent,
+    AppLoading
+  },
+  computed: {
+    loading() {
+      return this.$store.state.app.loading;
+    }
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+
+
 </style>
