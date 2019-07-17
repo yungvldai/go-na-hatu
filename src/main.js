@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import './static/app.css'
 import store from './store/index'
+import './uiLib.js'
 
 Vue.config.productionTip = false
 

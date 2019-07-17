@@ -1,6 +1,6 @@
 <template>
   <div id="app__content">
-    AppContent
+    <router-view />
   </div>
 </template>
 
@@ -15,5 +15,10 @@
     width: 100%;
     position: relative;
     margin-top: 64px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    height: 400px;
   }
 </style>

@@ -17,6 +17,10 @@
     position: fixed;
     top: 64px;
     left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: red;
+    z-index: 60;
   }
 </style>
