@@ -1,11 +1,8 @@
 var VueRippler = {
-  install: function install(Vue, options) {
+  install: function install(Vue) {
     Vue.mixin({
       mounted: function mounted() {
-        var length,
-          bounce,
-          ripple,
-          rippleContainer
+        var bounce, ripple, rippleContainer;
 
         function debounce(func, delay) {
           return function () {
@@ -42,7 +39,7 @@ var VueRippler = {
 
         var ripples = document.querySelectorAll('[ripple]')
 
-        for (var i = 0, length = ripples.length; i < length; i++) {
+        for (var i = 0; i < ripples.length; i++) {
           ripple = ripples[i]
           ripple.style.overflow = 'hidden'
           ripple.style.position = 'relative'
@@ -67,7 +64,7 @@ var VueRippler = {
         }
 
         var styleEl = document.createElement('style')
-        styleEl.innerHTML = '[ripple] .ripple--container .ripple--body {will-change:transform,opacity,auto;zoom:1;overflow:hidden;-webkit-transform:scale(0);-moz-transform:scale(0);-ms-transform:scale(0);-o-transform:scale(0);transform:scale(0);-webkit-border-radius:100%;-moz-border-radius:100%;border-radius:100%;position:absolute;opacity:0.5;background-color:rgba(0, 0, 0, 0.6);-webkit-animation:rippler 1000ms;-moz-animation:rippler 1000ms;-o-animation:rippler 1000ms;animation:rippler 1000ms;}@-webkit-keyframes rippler{to{opacity:0;-webkit-transform:scale(2);transform:scale(2);}}@-moz-keyframes rippler{to{opacity:0;-webkit-transform:scale(2);-moz-transform:scale(2);transform:scale(2);}}@-o-keyframes rippler{to{opacity:0;-webkit-transform:scale(2);-o-transform:scale(2);transform:scale(2);}}@keyframes rippler{to{opacity:0;-webkit-transform:scale(2);-moz-transform:scale(2);-o-transform:scale(2);transform:scale(2);}}'
+        styleEl.innerHTML = '[ripple] .ripple--container .ripple--body {will-change:transform,opacity,auto;zoom:1;overflow:hidden;-webkit-transform:scale(0);-moz-transform:scale(0);-ms-transform:scale(0);-o-transform:scale(0);transform:scale(0);-webkit-border-radius:100%;-moz-border-radius:100%;border-radius:100%;position:absolute;opacity:0.5;background-color:rgba(0, 0, 0, 0.2);-webkit-animation:rippler 1000ms;-moz-animation:rippler 1000ms;-o-animation:rippler 1000ms;animation:rippler 1000ms;}@-webkit-keyframes rippler{to{opacity:0;-webkit-transform:scale(2);transform:scale(2);}}@-moz-keyframes rippler{to{opacity:0;-webkit-transform:scale(2);-moz-transform:scale(2);transform:scale(2);}}@-o-keyframes rippler{to{opacity:0;-webkit-transform:scale(2);-o-transform:scale(2);transform:scale(2);}}@keyframes rippler{to{opacity:0;-webkit-transform:scale(2);-moz-transform:scale(2);-o-transform:scale(2);transform:scale(2);}}'
         styleEl.id = 'ripple-effect-style'
         if (!document.getElementById('ripple-effect-style'))
           document.head.appendChild(styleEl)

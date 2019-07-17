@@ -13,12 +13,9 @@
 <style scoped>
   #app__content {
     width: 100%;
-    position: relative;
-    margin-top: 64px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: column;
-    height: 400px;
+    position: absolute;
+    top: 64px;
+    left: 0px;
+    height: calc(100% - 64px);
   }
 </style>

@@ -45,11 +45,11 @@
     width: 60%;
     height: 64px;
     background-color: white;
-    position: absolute;
+    position: fixed;
     top: 70px;
     left: calc(20% - 2px);
     border-radius: 10px;
-    border: 1px solid #D4D4D4;
+    border: 1px solid $appBorder;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -57,7 +57,7 @@
   }
   .spacer {
     width: 1px;
-    background-color: #D4D4D4;
+    background-color: $appBorder;
     height: 42px;
   }
   .to__item {
