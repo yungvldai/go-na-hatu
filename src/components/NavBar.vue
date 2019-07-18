@@ -1,7 +1,9 @@
 <template>
   <div id="app__nav">
     <div id="nav__bar" :style="styles('bar')">
-      <div id="logo" :style="styles('logo')">go_na_hatu</div>
+      <div id="logo" :style="styles('logo')">
+        <img src="/logo_lol.png" style="width: 160px;"/>
+      </div>
     </div>
     <transition name="slide-fade">
       <app-menu v-if="userChoice"/>
@@ -25,7 +27,7 @@
           if (forWhat === 'bar') {
             return {
               height: this.userChoice ? '104px' : '64px',
-              'border-radius': this.userChoice ? '0 0 60% 60%' : '0',
+              'border-radius': this.userChoice ? '0 0 50% 50%' : '0',
               'box-shadow': this.userChoice ? '0px 2px 14px -2px black' : 'none'
             };
           }

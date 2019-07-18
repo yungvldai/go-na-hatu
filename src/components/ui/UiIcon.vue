@@ -1,6 +1,6 @@
 <template>
   <i class="material-icons ui__icon"
-    :style="indent ? `margin-${indent}: 8px;` : ''"
+    :style="(indent ? `margin-${indent}: 8px;` : '') + (color ? `color: ${color};` : '')"
   >
     {{ name }}
   </i>
@@ -10,7 +10,8 @@
   export default {
     props: {
       name: String,
-      indent: String
+      indent: String,
+      color: String
     }
   }
 </script>

@@ -16,7 +16,8 @@
         type: Function,
         required: true,
         default: () => {}
-      }
+      },
+      width: String
     },
     data: () => ({
       //
@@ -26,7 +27,8 @@
         return {
           color: this.color,
           border: `1px solid ${this.color}`,
-          '--bg-color-active': this.color
+          '--bg-color-active': this.color,
+          width: this.width
         }
       }
     }

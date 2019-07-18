@@ -4,7 +4,28 @@ export default {
   state: {
     partyList: [
       {
-
+        id: 1,
+        description: 'Есть много вариантов Lorem Ipsum, но большинство из них имеет не всегда приемлемые мода',
+        weWant: 'водочки и закуски',
+        weHave: 'колонка и немного пива',
+        peopleNow: 3,
+        peopleMax: 10,
+        address: 'ул. Пушкина, 12',
+        price: 100
+      },
+      {
+        id: 2,
+        description: 'Есть много вариантов Lorem Ipsum, но большинство из них имеет не всегда приемлемые модификац',
+        weWant: 'водочки и закуски',
+        peopleNow: 103
+      },
+      {
+        id: 3,
+        description: 'Есть много вариантов Lorem Ipsum, но бол',
+        weHave: 'колонка и немного пива',
+        peopleMax: 11,
+        address: 'за городом',
+        price: 10000
       }
     ]
   },

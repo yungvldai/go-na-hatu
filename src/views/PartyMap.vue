@@ -19,29 +19,36 @@
   export default {
     data: () => ({
       mapInstance: null,
-      pos: [55.76, 37.64]
+      pos: [37, 55]
     }),
     mounted() {
       if (!this.userChoice) {
         this.$store.commit('user/setChoice', 'find');
       }
+      this.getLocation();
       //TODO 'when api' this.$store.dispatch('party/get');
       mapboxgl.accessToken = 'pk.eyJ1IjoieXVuZ3ZsZGFpIiwiYSI6ImNqeThkbWg2OTAzYnEzZHBud2wyZW9tYmsifQ.XpqSXSU5y7PW60b0TAQb9w';
-      var map = new mapboxgl.Map({
+      this.mapInstance = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v10',
-        center: [37.64, 55.76],
-        zoom: 13
+        center: this.pos,
+        zoom: 10
       });
-      var geocoder = new MapboxGeocoder({
+      let geocoder = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
         mapboxgl: mapboxgl,
         language: 'ru-RU',
         placeholder: 'Поиск'
       });
-      document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
-      var language = new MapboxLanguage();
-      map.addControl(language);
+      document.getElementById('geocoder').appendChild(geocoder.onAdd(this.mapInstance));
+      let language = new MapboxLanguage();
+      this.mapInstance.addControl(language);
+      this.mapInstance.addControl(new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        trackUserLocation: true
+      }), 'bottom-right');
     },
     computed: {
       userChoice() {
@@ -53,7 +60,7 @@
       getLocation() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition((position) => {
-            this.pos = [position.coords.latitude, position.coords.longitude];
+            this.pos = [position.coords.longitude, position.coords.latitude];
           });
         } else {
           this.pos = [55.76, 37.64];
@@ -64,7 +71,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   #party__map {
     position: fixed;
     left: 0px;
