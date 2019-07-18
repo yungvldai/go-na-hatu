@@ -28,6 +28,7 @@ export default {
         description: 'Есть много вариантов Lorem Ipsum, но бол',
         weHave: 'колонка и немного пива',
         peopleMax: 11,
+        peopleNow: 10,
         address: 'за городом',
         price: 10000,
         phone: '+7324355003'

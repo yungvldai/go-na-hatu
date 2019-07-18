@@ -2,7 +2,11 @@
   <div id="party__list">
     <!-- <transition name="slide-fade">
       <div class="container"> -->
-        <div class="one__party" v-for="(party, index) in partyList" :key="`${party.id}@${index}`">
+        <div
+          class="one__party"
+          v-for="(party, index) in partyList"
+          :key="`${party.id}@${index}`"
+        >
           <div class="address">
             <ui-addr ripple :textAddr="party.address || 'Уточните позвонив'" />
           </div>
@@ -21,8 +25,16 @@
           </div>
           <div class="icons__block">
             <ui-flex class="icon">
+              <div
+                class="progress"
+                :style="(party.peopleMax && party.peopleNow)
+                  ? `width: ${100 / party.peopleMax * party.peopleNow}%`
+                  : 'width: 0%;'"
+              />
               <ui-icon indent="right" name="people"></ui-icon>
-              <span>{{ `${party.peopleNow || '\u2014'} / ${party.peopleMax || '\u221E'}` }}</span>
+              <span style="z-index: 61;">{{
+                `${party.peopleNow || '\u2014'} / ${party.peopleMax || '\u221E'}`
+              }}</span>
             </ui-flex>
             <ui-flex class="icon">
               <ui-icon indent="right" color="#0B6114" name="local_atm"></ui-icon>
@@ -93,6 +105,18 @@
           padding: 10px;
           border: 1px solid $appBorder;
           border-radius: 10px;
+          overflow: hidden;
+          .progress {
+            position: absolute;
+            border-radius: 10px 0 0 10px;
+            top: 0px;
+            left: 0px;
+            height: 100%;
+            width: 0px;
+            background-color: rgba(21, 212, 41, 0.2);
+            transition: 1s;
+            z-index: 60;
+          }
         }
         display: flex;
         align-items: center;

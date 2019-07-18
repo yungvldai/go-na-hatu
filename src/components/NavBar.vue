@@ -69,6 +69,6 @@
     align-items: center;
     justify-content: center;
     transition: height 0.6s, border-radius 0.8s, box-shadow 0.8s;
-    z-index: 61;
+    z-index: 62;
   }
 </style>

@@ -14,5 +14,6 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    position: relative;
   }
 </style>
