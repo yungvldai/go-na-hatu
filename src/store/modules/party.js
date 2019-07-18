@@ -11,13 +11,17 @@ export default {
         peopleNow: 3,
         peopleMax: 10,
         address: 'ул. Пушкина, 12',
-        price: 100
+        price: 100,
+        phone: '+73248934003',
+        orgName: 'Игорь'
       },
       {
         id: 2,
         description: 'Есть много вариантов Lorem Ipsum, но большинство из них имеет не всегда приемлемые модификац',
         weWant: 'водочки и закуски',
-        peopleNow: 103
+        peopleNow: 103,
+        phone: '8324345403',
+        orgName: 'Sergey'
       },
       {
         id: 3,
@@ -25,7 +29,8 @@ export default {
         weHave: 'колонка и немного пива',
         peopleMax: 11,
         address: 'за городом',
-        price: 10000
+        price: 10000,
+        phone: '+7324355003'
       }
     ]
   },

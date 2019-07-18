@@ -29,6 +29,12 @@
               <span>{{ party.price || 0 }} ₽</span>
             </ui-flex>
           </div>
+          <div class="contact">
+            <ui-flex>
+              <ui-phone :phone="party.phone"/>
+              <span class="org__name">({{ party.orgName || 'Кто-то' }})</span>
+            </ui-flex>
+          </div>
           <div class="controls">
 
           </div>
@@ -75,6 +81,11 @@
       .address {
         margin-bottom: 10px;
       }
+      .org__name {
+        color: gray;
+        font-size: 10pt;
+        margin-left: 10px;
+      }
       .icons__block {
         .icon {
           width: 35%;
@@ -87,8 +98,9 @@
         align-items: center;
         justify-content: space-around;
         margin-top: 16px;
+        margin-bottom: 16px;
       }
-      .we__have, .we__want, .controls {
+      .we__have, .we__want, .controls, .contact {
         position: relative;
         margin-top: 10px;
       }
