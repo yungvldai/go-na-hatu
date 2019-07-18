@@ -8,7 +8,7 @@
           :key="`${party.id}@${index}`"
         >
           <div class="address">
-            <ui-addr ripple :textAddr="party.address || 'Уточните позвонив'" />
+            <ui-addr v-ripple :textAddr="party.address || 'Уточните позвонив'" />
           </div>
           <div class="desc">
             {{ party.description || 'Нет описания' }}
@@ -47,9 +47,9 @@
               <span class="org__name">({{ party.orgName || 'Кто-то' }})</span>
             </ui-flex>
           </div>
-          <div class="controls">
+          <!-- <div class="controls">
 
-          </div>
+          </div> -->
         </div>
       <!-- </div>
     </transition> -->
@@ -88,7 +88,7 @@
   }
 
   #party__list {
-    margin-top: 90px;
+    margin-top: 82px;
     .one__party {
       .address {
         margin-bottom: 10px;
@@ -134,6 +134,7 @@
       margin-top: 0px;
       padding: 14px;
       border: 1px solid $appBorder;
+      background-color: white;
     }
   }
 </style>

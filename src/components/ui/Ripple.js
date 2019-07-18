@@ -1,79 +1,125 @@
-var VueRippler = {
-  install: function install(Vue) {
-    Vue.mixin({
-      mounted: function mounted() {
-        var bounce, ripple, rippleContainer;
+var Ripple = {
+    bind: function(el, binding){
 
-        function debounce(func, delay) {
-          return function () {
-            var context = this,
-              args = arguments
-            clearTimeout(bounce)
+        // Default values.
+        var props = {
+            event: 'mousedown',
+            transition: 600
+        };
 
-            return bounce = setTimeout(function () {
-              return func.apply(context, args)
-            }, delay)
-          }
+        setProps(Object.keys(binding.modifiers),props);
+
+        el.addEventListener(props.event, function(event) {
+            rippler(event, el, binding.value);
+        });
+
+        var bg = binding.value || Ripple.color || 'rgba(0, 0, 0, 0.35)';
+        var zIndex = Ripple.zIndex || '9999';
+
+        function rippler(event, el) {
+            var target = el;
+            // Get border to avoid offsetting on ripple container position
+            var targetBorder = parseInt((getComputedStyle(target).borderWidth).replace('px', ''));
+
+            // Get necessary variables
+            var rect        = target.getBoundingClientRect(),
+                left        = rect.left,
+                top         = rect.top,
+                width       = target.offsetWidth,
+                height      = target.offsetHeight,
+                dx          = event.clientX - left,
+                dy          = event.clientY - top,
+                maxX        = Math.max(dx, width - dx),
+                maxY        = Math.max(dy, height - dy),
+                style       = window.getComputedStyle(target),
+                radius      = Math.sqrt((maxX * maxX) + (maxY * maxY)),
+                border      = (targetBorder > 0 ) ? targetBorder : 0;
+
+            // Create the ripple and its container
+            var ripple = document.createElement("div"),
+                rippleContainer = document.createElement("div");
+                rippleContainer.className = 'ripple-container';
+                ripple.className = 'ripple';
+
+            //Styles for ripple
+            ripple.style.marginTop= '0px';
+            ripple.style.marginLeft= '0px';
+            ripple.style.width= '1px';
+            ripple.style.height= '1px';
+            ripple.style.transition= 'all ' + props.transition + 'ms cubic-bezier(0.4, 0, 0.2, 1)';
+            ripple.style.borderRadius= '50%';
+            ripple.style.pointerEvents= 'none';
+            ripple.style.position= 'relative';
+            ripple.style.zIndex= zIndex;
+            ripple.style.backgroundColor  = bg;
+
+            //Styles for rippleContainer
+            rippleContainer.style.position= 'absolute';
+            rippleContainer.style.left = 0 - border + 'px';
+            rippleContainer.style.top = 0 - border + 'px';
+            rippleContainer.style.height = '0';
+            rippleContainer.style.width = '0';
+            rippleContainer.style.pointerEvents = 'none';
+            rippleContainer.style.overflow = 'hidden';
+
+            rippleContainer.appendChild(ripple);
+            target.appendChild(rippleContainer);
+
+            ripple.style.marginLeft   = dx + "px";
+            ripple.style.marginTop    = dy + "px";
+
+            // No need to set positioning because ripple should be child of target and to it's relative position.
+            // rippleContainer.style.left    = left + (((window.pageXOffset || document.scrollLeft) - (document.clientLeft || 0)) || 0) + "px";
+            // rippleContainer.style.top     = top + (((window.pageYOffset || document.scrollTop) - (document.clientTop || 0)) || 0) + "px";
+            rippleContainer.style.width   = width + "px";
+            rippleContainer.style.height  = height + "px";
+            rippleContainer.style.borderTopLeftRadius  = style.borderTopLeftRadius;
+            rippleContainer.style.borderTopRightRadius  = style.borderTopRightRadius;
+            rippleContainer.style.borderBottomLeftRadius  = style.borderBottomLeftRadius;
+            rippleContainer.style.borderBottomRightRadius  = style.borderBottomRightRadius;
+
+            rippleContainer.style.direction = 'ltr';
+
+            setTimeout(function() {
+                ripple.style.width  = radius * 2 + "px";
+                ripple.style.height = radius * 2 + "px";
+                ripple.style.marginLeft   = dx - radius + "px";
+                ripple.style.marginTop    = dy - radius + "px";
+            }, 0);
+
+            function clearRipple() {
+                setTimeout(function() {
+                    ripple.style.backgroundColor = "rgba(0, 0, 0, 0)";
+                }, 250);
+
+                // Timeout set to get a smooth removal of the ripple
+                setTimeout(function() {
+                    rippleContainer.parentNode.removeChild(rippleContainer);
+                }, 850);
+
+                el.removeEventListener('mouseup', clearRipple, false);
+
+                // After removing event set position to target to it's original one
+                // Timeout it's needed to avoid jerky effect of ripple jumping out parent target
+                
+            }
+
+            if(event.type === 'mousedown') {
+                el.addEventListener('mouseup', clearRipple, false);
+            } else {
+                clearRipple();
+            }
         }
+    }
+};
 
-        function makeRipple(e) {
-          ripple = this
-          var setRipple = document.createElement('span')
-          setRipple.className = 'ripple--body'
-
-          var size = ripple.offsetWidth,
-            pos = ripple.getBoundingClientRect(),
-            x = e.clientX - pos.left - size / 2,
-            y = e.clientY - pos.top - size / 2,
-            style = 'will-change: top, left, height, width, auto; zoom: 1; top: ' + y + 'px; left: ' + x + 'px; height: ' + size + 'px; width: ' + size + 'px;'
-
-          ripple.rippleContainer.appendChild(setRipple)
-
-          return setRipple.setAttribute('style', style)
-        }
-
-        function removeRipple() {
-          while (this.rippleContainer.firstChild)
-            this.rippleContainer.removeChild(this.rippleContainer.firstChild)
-        }
-
-        var ripples = document.querySelectorAll('[ripple]')
-
-        for (var i = 0; i < ripples.length; i++) {
-          ripple = ripples[i]
-          ripple.style.overflow = 'hidden'
-          ripple.style.position = 'relative'
-
-          rippleContainer = document.createElement('div')
-          rippleContainer.className = 'ripple--container'
-          rippleContainer.style.zoom = '1'
-          rippleContainer.style.overflow = 'hidden'
-          rippleContainer.style.position = 'absolute'
-          rippleContainer.style.transform = 'translate3d(0, 0, 0)'
-          rippleContainer.style.webkitTransform = 'translate3d(0, 0, 0)'
-          rippleContainer.style.willChange = 'top, left, right, bottom, auto'
-          rippleContainer.style.top = '0'
-          rippleContainer.style.left = '0'
-          rippleContainer.style.right = '0'
-          rippleContainer.style.bottom = '0'
-
-          ripple.addEventListener('mousedown', makeRipple)
-          ripple.addEventListener('mouseup', debounce(removeRipple, 2000))
-          ripple.rippleContainer = rippleContainer
-          ripple.appendChild(rippleContainer)
-        }
-
-        var styleEl = document.createElement('style')
-        styleEl.innerHTML = '[ripple] .ripple--container .ripple--body {will-change:transform,opacity,auto;zoom:1;overflow:hidden;-webkit-transform:scale(0);-moz-transform:scale(0);-ms-transform:scale(0);-o-transform:scale(0);transform:scale(0);-webkit-border-radius:100%;-moz-border-radius:100%;border-radius:100%;position:absolute;opacity:0.5;background-color:rgba(0, 0, 0, 0.2);-webkit-animation:rippler 1000ms;-moz-animation:rippler 1000ms;-o-animation:rippler 1000ms;animation:rippler 1000ms;}@-webkit-keyframes rippler{to{opacity:0;-webkit-transform:scale(2);transform:scale(2);}}@-moz-keyframes rippler{to{opacity:0;-webkit-transform:scale(2);-moz-transform:scale(2);transform:scale(2);}}@-o-keyframes rippler{to{opacity:0;-webkit-transform:scale(2);-o-transform:scale(2);transform:scale(2);}}@keyframes rippler{to{opacity:0;-webkit-transform:scale(2);-moz-transform:scale(2);-o-transform:scale(2);transform:scale(2);}}'
-        styleEl.id = 'ripple-effect-style'
-        if (!document.getElementById('ripple-effect-style'))
-          document.head.appendChild(styleEl)
-      }
-    })
-  }
+function setProps(modifiers,props) {
+    modifiers.forEach(function(item) {
+        if(isNaN(Number(item)))
+            props.event = item;
+        else
+            props.transition = item;
+    });
 }
 
-if (typeof window !== 'undefined' && window.Vue)
-  window.VueRippler = VueRippler
-
-export default VueRippler
+export default Ripple;

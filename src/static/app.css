@@ -3,6 +3,8 @@ body {
   font-size: 14pt;
   margin: 0px;
   padding: 0px;
+  background-color: #F4F4F4;
+  overflow-x: hidden;
 }
 
 .bold {

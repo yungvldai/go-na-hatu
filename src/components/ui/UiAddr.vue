@@ -28,5 +28,6 @@
     background-color: pink;
     border-radius: 10px;
     padding-right: 9px;
+    position: relative;
   }
 </style>

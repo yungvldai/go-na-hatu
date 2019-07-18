@@ -1,8 +1,8 @@
 <template>
   <div id="app__menu">
     <div
+      v-ripple
       class="to__item"
-      ripple
       style="border-radius: 10px 0 0 10px;"
       @click="$router.push('/map')"
     >
@@ -16,8 +16,8 @@
     </div>
     <div class="spacer" />
     <div
+      v-ripple
       class="to__item"
-      ripple
       style="border-radius: 0 10px 10px 0;"
       @click="$router.push('/list')"
     >
@@ -72,6 +72,7 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    position: relative;
   }
 
 </style>
