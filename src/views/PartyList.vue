@@ -10,7 +10,7 @@
           <ui-addr v-ripple :coords="party.where" :textAddr="party.address || 'Уточните позвонив'" />
         </div>
         <div class="options">
-          <ui-adv-menu />
+          <ui-adv-menu :item="party" />
         </div>
       </div>
       <div class="desc">

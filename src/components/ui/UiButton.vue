@@ -21,6 +21,10 @@
       border: {
         type: Boolean,
         default: true
+      },
+      align: {
+        type: String,
+        default: 'center'
       }
     },
     data: () => ({
@@ -32,7 +36,8 @@
           color: this.color,
           border: this.border ? `1px solid ${this.color}` : 'none',
           '--bg-color-active': this.color,
-          width: this.width
+          width: this.width,
+          'justify-content': this.align
         }
       }
     }
@@ -51,7 +56,6 @@
     font-size: 14pt;
     line-height: 1.5;
     align-items: center;
-    justify-content: center;
   }
   .ui__button:active {
     color: white !important;
