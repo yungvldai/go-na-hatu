@@ -1,14 +1,14 @@
 <template>
   <div id="app__nav">
     <transition name="slide-fade">
-      <div v-if="userChoice" id="back__button" v-ripple @click="userChoice === 'find' ? $router.back() : moveWarn()">
+      <div v-if="userChoice" id="back__button" v-ripple @click="userChoice !== 'wait' ? $router.back() : moveWarn()">
         <i class="material-icons" style="margin-left: 4px;">
           arrow_back_ios
         </i>
       </div>
     </transition>
     <div id="nav__bar" :style="styles('bar')">
-      <div id="logo" :style="styles('logo')" @click="userChoice === 'find' ? $router.push('/') : moveWarn()">
+      <div id="logo" :style="styles('logo')" @click="userChoice !== 'wait' ? $router.push('/') : moveWarn()">
         <img src="/logo_lol.png" style="width: 160px;"/>
       </div>
     </div>

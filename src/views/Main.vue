@@ -48,7 +48,7 @@
       width: 100%;
       bottom: 0px;
       left: 0px;
-      padding-bottom: 4px;
+      padding-bottom: 8px;
       color: grey;
       font-size: 10pt;
       text-align: center;
@@ -63,22 +63,29 @@
       align-items: center;
       flex-direction: column;
       text-align: center;
-      height: 80%;
+      height: 100%;
+      width: 100%;
+      position: relative;
       #greet {
         height: 50%;
-        margin: 20px;
-        width: calc(100% - 40px);
-        background-color: aqua;
+        margin-bottom: 40px;
+        width: 100%;
+        background-image: url('/bg.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        box-shadow: 7px 7px 20px -4px rgba(0,0,0,0.75);
+        border-radius: 0 0 10em 10em/0 0 1em 1em;
       }
       .spacer {
         height: 1px;
         background-color: $appBorder;
         width: 70%;
-        margin: 10px;
+        margin: 20px;
         display: inline-block;
       }
       .button {
-        margin: 20px;
+        margin: 10px;
       }
     }
     width: 100%;
@@ -88,5 +95,6 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    padding: 0px;
   }
 </style>

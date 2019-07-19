@@ -45,6 +45,12 @@
           <span class="org__name">({{ party.orgName || 'Кто-то' }})</span>
         </ui-flex>
       </div>
+      <div class="actions">
+        <ui-button color="#AA8807" width="calc(100% - 28px)" :action="() => {}">
+          <ui-icon indent="right" name="directions_run" />
+          Я приду
+        </ui-button>
+      </div>
     </div>
   </div>
 </template>
@@ -123,7 +129,7 @@
       .desc {
         color: black;
       }
-      .we__have, .we__want, .controls, .contact {
+      .we__have, .we__want, .controls, .contact, .actions {
         position: relative;
         margin-top: 10px;
       }

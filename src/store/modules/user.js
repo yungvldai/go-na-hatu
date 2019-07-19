@@ -2,8 +2,9 @@ export default {
   state: {
     choice: null
     /*
-      'create' - i`am finding party
-      'find' - i`am organize party
+      'find' - i`am finding party
+      'create' - i`am organizing party
+      'wait' - i`am waiting for participants
     */
   },
   mutations: {

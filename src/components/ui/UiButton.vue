@@ -41,6 +41,7 @@
 
 <style scoped>
   .ui__button {
+    outline: none;
     user-select: none;
     border-radius: 6px;
     padding: 6px 12px;
