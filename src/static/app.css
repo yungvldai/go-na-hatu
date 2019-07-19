@@ -10,3 +10,7 @@ body {
 .bold {
   font-weight: bold;
 }
+
+.geocoder .mapboxgl-ctrl-geocoder {
+  box-shadow: 7px 7px 20px -9px rgba(0,0,0,0.75);
+}

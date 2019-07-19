@@ -10,7 +10,7 @@
         class="material-icons"
         style="color: #641E16;"
       >
-        location_on
+        public
       </i>
       <span class="item__text">Карта</span>
     </div>

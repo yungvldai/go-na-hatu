@@ -30,7 +30,7 @@
     transition: all .8s ease-in-out;
   }
   .slide-fade-enter, .slide-fade-leave-to {
-    transform: translateX(-20px);
+    transform: translateX(-10px);
     opacity: 0;
   }
 
