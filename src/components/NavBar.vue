@@ -1,5 +1,10 @@
 <template>
   <div id="app__nav">
+    <div id="back__button" v-ripple @click="$router.back()">
+      <i class="material-icons" style="margin-left: 4px;">
+        arrow_back_ios
+      </i>
+    </div>
     <div id="nav__bar" :style="styles('bar')">
       <div id="logo" :style="styles('logo')">
         <img src="/logo_lol.png" style="width: 160px;"/>
@@ -57,6 +62,23 @@
 
   #logo {
     transition: all .8s ease 0.2s;
+  }
+
+  #back__button {
+    font-size: 18pt;
+    position: fixed;
+    color: white;
+    top: 15px;
+    left: 14px;
+    z-index: 63;
+    padding: 4px;
+    padding-right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
   }
 
   #nav__bar {

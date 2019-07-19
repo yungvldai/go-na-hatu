@@ -18,6 +18,7 @@
 
 <style scoped>
   .ui__icon {
+    user-select: none;
     z-index: 61;
     font-size: 18pt;
   }

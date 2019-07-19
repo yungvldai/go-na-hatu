@@ -13,7 +13,8 @@ export default {
         address: 'ул. Пушкина, 12',
         price: 100,
         phone: '+73248934003',
-        orgName: 'Игорь'
+        orgName: 'Игорь',
+        where: [57, 32]
       },
       {
         id: 2,
@@ -21,7 +22,8 @@ export default {
         weWant: 'водочки и закуски',
         peopleNow: 103,
         phone: '8324345403',
-        orgName: 'Sergey'
+        orgName: 'Sergey',
+        where: [0, 0]
       },
       {
         id: 3,
@@ -31,7 +33,8 @@ export default {
         peopleNow: 10,
         address: 'за городом',
         price: 10000,
-        phone: '+7324355003'
+        phone: '+7324355003',
+        where: [20, 20]
       }
     ]
   },
@@ -41,14 +44,14 @@ export default {
     }
   },
   actions: {
-    'party/get': function({state, commit}) {
+    'party/get': function({commit}) {
       commit('app/loading', true);
       api.get('partylist')
       .then(response => {
         commit('party/save', response.data);
       })
-      .catch(error => {
-        console.log(error);
+      .catch(() => {
+
       })
       .finally(() => {
         commit('app/loading', false);

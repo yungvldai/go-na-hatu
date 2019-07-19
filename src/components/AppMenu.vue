@@ -49,7 +49,7 @@
     top: 70px;
     left: calc(20% - 2px);
     border-radius: 10px;
-    border: 1px solid $appBorder;
+    box-shadow: 7px 7px 20px -9px rgba(0,0,0,0.75);
     display: flex;
     justify-content: space-around;
     align-items: center;

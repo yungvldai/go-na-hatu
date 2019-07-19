@@ -36,16 +36,16 @@
 
   .show__phone {
     text-decoration: underline;
-    color: $appColor;
     font-weight: bold;
   }
 
   .phone__link {
-    color: $appColor;
     font-weight: bold;
+    color: $appColor;
   }
 
   .ui__phone {
+    color: $appColor;
     display: inline-flex;
     align-items: center;
     justify-content: center;

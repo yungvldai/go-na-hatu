@@ -17,7 +17,11 @@
         required: true,
         default: () => {}
       },
-      width: String
+      width: String,
+      border: {
+        type: Boolean,
+        default: true
+      }
     },
     data: () => ({
       //
@@ -26,7 +30,7 @@
       styles() {
         return {
           color: this.color,
-          border: `1px solid ${this.color}`,
+          border: this.border ? `1px solid ${this.color}` : 'none',
           '--bg-color-active': this.color,
           width: this.width
         }

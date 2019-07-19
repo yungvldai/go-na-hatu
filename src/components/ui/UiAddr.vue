@@ -1,9 +1,11 @@
 <template>
-  <div class="ui__addr">
+  <div class="ui__addr" @click="goMapOneLoc">
     <i class="material-icons" style="margin-right: 2px;">
       location_on
     </i>
-    {{ textAddr }}
+    <span class="addr__text">
+      {{ textAddr }}
+    </span>
   </div>
 </template>
 
@@ -12,22 +14,29 @@
     props: {
       textAddr: String,
       coords: Array
+    },
+    methods: {
+      goMapOneLoc() {
+        if (this.coords && this.coords instanceof Array && this.coords.length === 2) {
+          this.$store.commit('app/loadOnlyOneLocation', this.coords);
+          this.$router.push('/map');
+        }
+      }
     }
   }
 </script>
 
 <style scoped lang="scss">
   .ui__addr {
-    font-size: 10pt;
+    .addr__text {
+      text-decoration: underline;
+    }
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 1px 5px;
+    color: #1C9471;
     font-weight: bold;
-    color: #671015;
-    background-color: pink;
-    border-radius: 10px;
-    padding-right: 9px;
+    border-radius: 5px;
     position: relative;
   }
 </style>
