@@ -1,5 +1,10 @@
 import axios from 'axios';
 
-export const api = axios.create({
-  baseURL: 'https://gonahatu.herokuapp.com/'
+const api_addr = 'https://gonahatu.herokuapp.com/';
+
+const api = axios.create({
+  baseURL: api_addr
 });
+
+
+export { api_addr, api };

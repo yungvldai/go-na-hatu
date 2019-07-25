@@ -2,7 +2,7 @@
   <div class="one__party">
     <div class="top__block">
       <div class="address__container">
-        <ui-addr v-ripple :coords="party.location" :textAddr="party.address || 'Уточните позвонив'" />
+        <ui-addr v-ripple :id="party.id" :coords="party.location" :textAddr="party.address || 'Уточните позвонив'" />
       </div>
       <div class="options">
         <ui-adv-menu :item="party" />

@@ -13,12 +13,13 @@
   export default {
     props: {
       textAddr: String,
-      coords: Array
+      coords: Array,
+      id: Number
     },
     methods: {
       goMapOneLoc() {
         if (this.coords && this.coords instanceof Array && this.coords.length === 2) {
-          this.$store.commit('app/loadOnlyOneLocation', this.coords);
+          this.$store.commit('app/loadOnlyOneLocation', {location: this.coords, id: this.id});
           this.$router.push('/map');
         }
       }

@@ -16,6 +16,7 @@
   import MapboxLanguage from '@mapbox/mapbox-gl-language';
   import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
   import { pulsingDot, registerMapInstance } from './pulsingDot.js';
+  import { api_addr } from '@/services/api.js';
 
   export default {
     data: () => ({
@@ -69,9 +70,13 @@
         this.geolocate.trigger();
         this.mapInstance.addImage('pulsing-dot', pulsingDot, { pixelRatio: 2 });
         this.loadPlaces();
+
+        this.mapInstance.on('click', 'points', e => {
+          let features = this.mapInstance.queryRenderedFeatures(e.point, { layers: ['points'] });
+          var pointId = features[0].properties.id;
+          this.$router.push('/party/' + pointId);
+        });
       });
-
-
     },
     computed: {
       userChoice() {
@@ -82,7 +87,7 @@
       mapAddAllParties() {
         this.mapInstance.addSource("parties", {
           type: "geojson",
-          data: "https://gonahatu.herokuapp.com/api/parties/map",
+          data: api_addr + "api/parties/map",
           cluster: true,
           clusterMaxZoom: 12,
           clusterRadius: 50
@@ -158,7 +163,7 @@
         });
 
         this.mapInstance.addLayer({
-          id: "unclustered-point",
+          id: "points",
           type: "symbol",
           source: 'parties',
           filter: ["!", ["has", "point_count"]],
@@ -168,8 +173,7 @@
         });
       },
 
-      mapAddIcon(coords) {
-        this.points.push(coords);
+      mapAddIcon(coords, id) {
         this.mapInstance.addLayer({
           "id": "points",
           "type": "symbol",
@@ -179,6 +183,9 @@
               "type": "FeatureCollection",
               "features": [{
                 "type": "Feature",
+                "properties": {
+                  "id": id
+                },
                 "geometry": {
                   "type": "Point",
                   "coordinates": coords
@@ -201,9 +208,10 @@
           });
         } else {
           let location = this.$store.state.app.oneLocation;
-          this.mapAddIcon(location);
+          let id = this.$store.state.app.oneId;
+          this.mapAddIcon(location, id);
           this.$store.commit('app/loading', false);
-          this.mapInstance.flyTo({center: location, zoom: 9});
+          this.mapInstance.flyTo({center: location, zoom: 12});
         }
         this.$store.commit('app/loadAllLocations');
       }

@@ -11,6 +11,7 @@
 </script>
 
 <style scoped>
+
   #app__content {
     width: 100%;
     position: absolute;

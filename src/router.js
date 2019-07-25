@@ -7,6 +7,8 @@ import Main from '@/views/Main.vue'
 import PartyList from '@/views/PartyList/PartyList.vue'
 import PartyMap from '@/views/PartyMap/PartyMap.vue'
 import PartyCreate from '@/views/PartyCreate/PartyCreate.vue'
+import OneParty from '@/views/OneParty.vue'
+import NotFound from '@/views/NotFound.vue'
 
 import store from '@/store/index'
 
@@ -33,6 +35,16 @@ const router = new Router({
       path: '/create',
       name: 'create',
       component: PartyCreate
+    },
+    {
+      path: '/party/:id',
+      name: 'party',
+      component: OneParty
+    },
+    {
+      path: '*',
+      name: 'notfound',
+      component: NotFound
     }
 
   ]

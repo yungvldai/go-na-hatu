@@ -2,15 +2,33 @@ import { api } from '@/services/api.js';
 
 export default {
   state: {
-    partyList: []
+    partyList: [],
+    oneParty: {}
   },
   mutations: {
     'party/save': function(state, newPartyList) {
       state.partyList = newPartyList;
+    },
+    'oneparty/save': function(state, newOneParty) {
+      state.oneParty = newOneParty;
     }
   },
   actions: {
-    'party/get': function({commit}, callback) {
+    'oneparty/get': function({commit}, {id, callback = () => {}}) {
+      commit('app/loading', true);
+      api.get('/api/parties/party/' + id)
+      .then(response => {
+        commit('oneparty/save', response.data);
+        callback();
+      })
+      .catch(() => {
+
+      })
+      .finally(() => {
+        commit('app/loading', false);
+      })
+    },
+    'party/get': function({commit}, callback = () => {}) {
       commit('app/loading', true);
       api.get('/api/parties/all')
       .then(response => {
