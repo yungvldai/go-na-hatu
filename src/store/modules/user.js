@@ -1,6 +1,8 @@
 export default {
   state: {
-    choice: null
+    choice: null,
+    whatEdit: 'map',
+    scroll: {x: 0, y: 0}
     /*
       'find' - i`am finding party
       'create' - i`am organizing party
@@ -8,8 +10,14 @@ export default {
     */
   },
   mutations: {
+    'user/saveScroll': function(state, scroll) {
+      state.scroll = scroll;
+    },
     'user/setChoice': function(state, choice) {
       state.choice = choice;
+    },
+    'user/whatEdit': function(state, what) {
+      state.whatEdit = what;
     }
   }
 }

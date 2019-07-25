@@ -1,6 +1,7 @@
 <template>
   <div id="app__menu">
     <div
+      v-if="userChoice === 'find'"
       v-ripple
       class="to__item"
       style="border-radius: 10px 0 0 10px;"
@@ -14,8 +15,24 @@
       </i>
       <span class="item__text">Карта</span>
     </div>
+    <div
+      v-if="userChoice === 'create'"
+      v-ripple
+      class="to__item"
+      style="border-radius: 0 10px 10px 0;"
+      @click="$store.commit('user/whatEdit', 'map')"
+    >
+      <i
+        class="material-icons"
+        style="color: #7A1085;"
+      >
+        location_on
+      </i>
+      <span class="item__text">Место</span>
+    </div>
     <div class="spacer" />
     <div
+      v-if="userChoice === 'find'"
       v-ripple
       class="to__item"
       style="border-radius: 0 10px 10px 0;"
@@ -29,13 +46,30 @@
       </i>
       <span class="item__text">Список</span>
     </div>
+    <div
+      v-if="userChoice === 'create'"
+      v-ripple
+      class="to__item"
+      style="border-radius: 0 10px 10px 0;"
+      @click="$store.commit('user/whatEdit', 'info')"
+    >
+      <i
+        class="material-icons"
+        style="color: #189266;"
+      >
+        edit
+      </i>
+      <span class="item__text">Информация</span>
+    </div>
   </div>
 </template>
 
 <script>
   export default {
     computed: {
-
+      userChoice() {
+        return this.$store.state.user.choice;
+      }
     }
   }
 </script>

@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'https://no-addr.io'
+  baseURL: 'https://gonahatu.herokuapp.com/'
 });

@@ -4,9 +4,11 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 import Main from '@/views/Main.vue'
-import PartyList from '@/views/PartyList.vue'
-import PartyMap from '@/views/PartyMap.vue'
-import vueScrollBehavior from 'vue-scroll-behavior'
+import PartyList from '@/views/PartyList/PartyList.vue'
+import PartyMap from '@/views/PartyMap/PartyMap.vue'
+import PartyCreate from '@/views/PartyCreate/PartyCreate.vue'
+
+import store from '@/store/index'
 
 const router = new Router({
   mode: 'history',
@@ -30,12 +32,20 @@ const router = new Router({
     {
       path: '/create',
       name: 'create',
-      //component: PartyCreate
+      component: PartyCreate
     }
 
   ]
 });
 
-Vue.use(vueScrollBehavior, { router: router });
+router.beforeEach((to, from, next) => {
+  if (from.name === 'list') {
+    store.commit('user/saveScroll', {
+      x: window.pageXOffset,
+      y: window.pageYOffset
+    });
+  }
+  next();
+});
 
 export default router;

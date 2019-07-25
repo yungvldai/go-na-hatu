@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <nav-bar />
-    <app-loading v-if="loading" />
-    <app-content v-else />
+    <app-loading v-show="loading" />
+    <app-content v-show="!loading" />
   </div>
 </template>
 
