@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <nav-bar />
-    <app-loading v-show="loading" />
+    <transition name="enter">
+      <app-loading v-show="loading" />
+    </transition>
     <app-content v-show="!loading" />
   </div>
 </template>
@@ -27,6 +29,14 @@ export default {
 </script>
 
 <style scoped>
-
+  .enter-enter-active {
+    transition: all .3s ease-in-out;
+  }
+  .enter-leave-active {
+    transition: all .3s ease-in-out;
+  }
+  .enter-enter, .enter-leave-to {
+    opacity: 0
+  }
 
 </style>

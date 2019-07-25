@@ -13,6 +13,7 @@
 </script>
 
 <style lang="scss" scoped>
+
   #app__loading {
     width: 100%;
     height: calc(100% - 64px);
