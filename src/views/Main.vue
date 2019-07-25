@@ -35,6 +35,7 @@
       },
       goCreate() {
         this.$store.commit('user/setChoice', 'create');
+        this.$store.commit('user/whatEdit', 'map');
         setTimeout(() => this.$router.push('/create'), 200);
       }
     }

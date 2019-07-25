@@ -15,8 +15,8 @@ function handleError(error) {
 
 api.interceptors.response.use(response => response,
   error => {
-	  handleError(error);
-	  return Promise.reject(error);
+    handleError(error);
+    return Promise.reject(error);
   }
 );
 

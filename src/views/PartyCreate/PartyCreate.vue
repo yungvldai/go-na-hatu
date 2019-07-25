@@ -1,6 +1,6 @@
 <template>
   <div id="party__create">
-    <EditMap v-if="whatEdit === 'map'" />
+    <EditMap v-if="whatEdit === 'map'" :data="geoData" />
     <EditInfo v-if="whatEdit === 'info'" :createData="createData" />
   </div>
 </template>
@@ -15,10 +15,13 @@
       EditInfo
     },
     data: () => ({
+      geoData: {
+        location: null
+      },
       createData: {
         weWant: '',
         weHave: '',
-        description: ''
+        description: '',
       }
     }),
     mounted() {

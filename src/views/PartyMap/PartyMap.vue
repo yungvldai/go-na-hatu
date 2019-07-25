@@ -42,7 +42,8 @@
         accessToken: mapboxgl.accessToken,
         mapboxgl: mapboxgl,
         language: 'ru-RU',
-        placeholder: 'Поиск'
+        placeholder: 'Поиск',
+        marker: false
       });
       document.getElementById('geocoder').appendChild(geocoder.onAdd(this.mapInstance));
       let language = new MapboxLanguage();
