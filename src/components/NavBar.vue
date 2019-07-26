@@ -1,5 +1,5 @@
 <template>
-  <div id="app__nav">
+  <div id="app__nav" @touchmove.prevent>
     <transition name="slide-fade">
       <div v-if="userChoice" id="back__button" v-ripple @click="userChoice !== 'wait' ? $router.back() : moveWarn()">
         <i class="material-icons" style="margin-left: 4px;">

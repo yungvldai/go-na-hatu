@@ -9,6 +9,10 @@
           <ui-adv-menu :item="party" />
         </div>
       </div>
+      <div class="date">
+        {{ niceDate(party.publicationDate) + ' ' + niceTime(party.publicationDate) }}
+      </div>
+      <div class="spacer" />
       <div class="desc">
         {{ party.description || 'Нет описания' }}
       </div>
@@ -22,6 +26,7 @@
         <span class="bold" style="color: #641E16;" v-else>Ничего не надо, приходи просто так</span>
         {{ party.weWant }}
       </div>
+      <div class="spacer" />
       <div class="icons__block">
         <ui-flex class="icon">
           <ui-prog-div :value="(party.peopleMax && party.peopleNow) ? 100 / party.peopleMax * party.peopleNow : 0" />
@@ -58,7 +63,10 @@
 </template>
 
 <script>
+  import pretty from '@/mixins/pretty.js';
+
   export default {
+    mixins: [pretty],
     mounted() {
       if (!this.userChoice) {
         this.$store.commit('user/setChoice', 'find');
@@ -113,6 +121,14 @@
       color: gray;
       font-size: 10pt;
       margin-left: 10px;
+    }
+    .spacer {
+      width: 100%;
+      background-color: $appBorder;
+      height: 1px;
+      margin: 10px;
+      margin-left: 0px;
+      margin-right: 0px;
     }
     .icons__block {
       .icon {
