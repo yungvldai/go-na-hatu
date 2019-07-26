@@ -8,6 +8,7 @@ import PartyList from '@/views/PartyList/PartyList.vue'
 import PartyMap from '@/views/PartyMap/PartyMap.vue'
 import PartyCreate from '@/views/PartyCreate/PartyCreate.vue'
 import OneParty from '@/views/OneParty.vue'
+import Poll from '@/views/Poll.vue'
 import NotFound from '@/views/NotFound.vue'
 
 import store from '@/store/index'
@@ -40,6 +41,11 @@ const router = new Router({
       path: '/party/:id',
       name: 'party',
       component: OneParty
+    },
+    {
+      path: '/poll',
+      name: 'poll',
+      component: Poll
     },
     {
       path: '*',

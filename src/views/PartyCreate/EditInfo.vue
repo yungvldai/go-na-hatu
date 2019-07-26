@@ -1,56 +1,73 @@
 <template>
   <div id="edit__info">
-    <div v-if="step === 1">
-      <span class="hint">Про тусу</span>
-      <ui-text-input
-        type="textarea"
-        v-model="createData.description"
-        placeholder="Описание"
-        width="calc(100% - 25px)"
-        height="100px"
-      />
-      <ui-text-input
-        type="textarea"
-        v-model="createData.weHave"
-        placeholder="У нас есть"
-        width="calc(100% - 25px)"
-        height="100px"
-      />
-      <ui-text-input
-        type="textarea"
-        v-model="createData.weWant"
-        placeholder="От тебя хотим"
-        width="calc(100% - 25px)"
-        height="100px"
-      />
-    </div>
-    <div v-if="step === 2">
-      <span class="hint">Контакты</span>
-      <ui-text-input
-        v-model="createData.address"
-        placeholder="Адрес текстом"
-        width="calc(100% - 25px)"
-      />
-      <ui-text-input
-        v-model="createData.phone"
-        placeholder="Телефон"
-        width="calc(40% - 25px)"
-      />
-      <ui-text-input
-        v-model="createData.aa"
-        placeholder="Адрес текстом"
-        width="calc(40% - 25px)"
-      />
-    </div>
-
+    <span class="hint">Напишите про тусу</span>
+    <ui-text-input
+      type="textarea"
+      v-model="createData.description"
+      placeholder="Описание"
+      width="calc(100% - 25px)"
+      height="100px"
+    />
+    <ui-text-input
+      type="textarea"
+      v-model="createData.weHave"
+      placeholder="У нас есть"
+      width="calc(100% - 25px)"
+      height="100px"
+    />
+    <ui-text-input
+      type="textarea"
+      v-model="createData.weWant"
+      placeholder="От тебя хотим"
+      width="calc(100% - 25px)"
+      height="100px"
+    />
+    <ui-text-input
+      v-model="createData.peopleNow"
+      placeholder="Чел. сейчас"
+      width="calc(50% - 28px)"
+      style="margin-right: 30px;"
+    />
+    <ui-text-input
+      v-model="createData.peopleMax"
+      placeholder="Чел. макс."
+      width="calc(50% - 28px)"
+    />
+    <ui-text-input
+      v-model="createData.price"
+      placeholder="Вход, ₽"
+      width="calc(100% - 25px)"
+      style="margin-top: 5px;"
+    />
+    <span class="hint" style="margin-top: 20px;">Как вас найти</span>
+    <ui-text-input
+      v-model="createData.address"
+      placeholder="Адрес текстом"
+      width="calc(100% - 25px)"
+    />
+    <ui-text-input
+      v-model="createData.phone"
+      placeholder="Телефон"
+      width="calc(50% - 28px)"
+      style="margin-right: 30px;"
+    />
+    <ui-text-input
+      v-model="createData.ownerName"
+      placeholder="Имя"
+      width="calc(50% - 28px)"
+      style="margin-top: 5px; margin-bottom: 10px;"
+    />
+    <ui-button color="#4A235A" width="calc(100% - 28px)" :action="action">
+      <ui-icon indent="right" name="add_to_photos" />
+      Создать
+    </ui-button>
   </div>
 </template>
 
 <script>
   export default {
-    props: ['createData'],
+    props: ['createData', 'action'],
     data: () => ({
-      step: 1
     }),
     mounted() {
       if (!this.userChoice) {

@@ -4,7 +4,7 @@
       <EditMap v-if="whatEdit === 'map'" :data="geoData" />
     </transition>
     <transition name="slide-fade">
-      <EditInfo v-if="whatEdit === 'info'" :createData="createData" />
+      <EditInfo v-if="whatEdit === 'info'" :createData="createData" :action="createParty" />
     </transition>
   </div>
 </template>
@@ -13,10 +13,33 @@
   import EditInfo from './EditInfo.vue';
   import EditMap from './EditMap.vue'
 
+  import { api } from '@/services/api.js';
+
   export default {
     components: {
       EditMap,
       EditInfo
+    },
+    methods: {
+      createParty() {
+        let form = this.createData;
+        form.weWant = form.weWant.trim();
+        form.weHave = form.weHave.trim();
+        form.description = form.description.trim();
+        form.phone = form.phone.trim();
+        form.address = form.address.trim();
+        form.ownerName = form.ownerName.trim();
+        form.location = [this.geoData.location.lng, this.geoData.location.lat];
+
+        api.post('api/parties/newParty', form)
+        .then(response => {
+          this.$router.push('/poll');
+        })
+        .catch(error => {
+
+        });
+
+      }
     },
     data: () => ({
       geoData: {
@@ -28,7 +51,10 @@
         description: '',
         phone: '',
         address: '',
-        aa: ''
+        ownerName: '',
+        price: null,
+        peopleNow: null,
+        peopleMax: null
       }
     }),
     mounted() {

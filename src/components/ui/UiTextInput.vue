@@ -1,9 +1,8 @@
 <template>
-  <div class="ui__textinput">
+  <div class="ui__textinput" :style="styles">
     <textarea
       v-if="type === 'textarea'"
       class="input"
-      :style="styles"
       @input="handleInput($event.target.value)"
       @focus="focus = true"
       @blur="focus = false"
@@ -15,7 +14,6 @@
       type="text"
       :value="value"
       class="input"
-      :style="styles"
       @input="handleInput($event.target.value)"
       @focus="focus = true"
       @blur="focus = false"
@@ -48,14 +46,16 @@
 
 <style scoped lang="scss">
   .ui__textinput {
-    margin-bottom: 10px;
     position: relative;
+    display: inline-block;
     .placeholder {
       position: absolute;
       color: $appBorder;
       transition: 0.3s;
     }
     .input {
+      width: 100%;
+      height: 100%;
       padding: 6px 12px;
       border-radius: 6px;
       border: 1px solid $appBorder;

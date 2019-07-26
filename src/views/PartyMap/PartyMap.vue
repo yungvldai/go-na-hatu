@@ -68,7 +68,9 @@
         });
       });
       this.mapInstance.on('load', () => {
-        this.geolocate.trigger();
+        if (this.$store.state.app.needToLoad) {
+          this.geolocate.trigger();
+        }
         this.mapInstance.addImage('pulsing-dot', pulsingDot, { pixelRatio: 2 });
         this.loadPlaces();
 
