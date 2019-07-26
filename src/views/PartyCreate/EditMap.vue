@@ -59,12 +59,15 @@
       },
       userChoice() {
         return this.$store.state.user.choice;
+      },
+      locationIsNotSet() {
+        return this.data.location[0] === -1 && this.data.location[1] === -1;
       }
     },
     methods: {
       goEditInfo() {
         this.data.location = this.mapInstance.getCenter();
-        setTimeout(() => this.$store.commit('user/whatEdit', 'info'), 400);
+        setTimeout(() => this.$store.commit('user/whatEdit', 'info'), 200);
       },
       setFingerOn() {
         this.fingerOnScreen = true;
@@ -85,11 +88,16 @@
       this.mapSelector.addEventListener('touchend', this.unsetFingerOn)
 
       mapboxgl.accessToken = 'pk.eyJ1IjoieXVuZ3ZsZGFpIiwiYSI6ImNqeThkbWg2OTAzYnEzZHBud2wyZW9tYmsifQ.XpqSXSU5y7PW60b0TAQb9w';
-      this.mapInstance = new mapboxgl.Map({
+      let mapObj = {
         container: 'edit--map',
         style: 'mapbox://styles/mapbox/streets-v10',
         zoom: 1
-      });
+      };
+      if (!this.locationIsNotSet) {
+        mapObj.zoom = 16;
+        mapObj.center = this.data.location;
+      }
+      this.mapInstance = new mapboxgl.Map(mapObj);
       let geocoder = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
         mapboxgl: mapboxgl,
@@ -108,8 +116,10 @@
       });
       this.mapInstance.addControl(this.geolocate, 'bottom-right');
       this.mapInstance.on('load', () => {
-        this.geolocate.trigger();
-        this.data.location = this.mapInstance.getCenter();
+        if (this.locationIsNotSet) {
+          this.geolocate.trigger();
+          this.data.location = this.mapInstance.getCenter();
+        }
       });
     },
     destroyed() {

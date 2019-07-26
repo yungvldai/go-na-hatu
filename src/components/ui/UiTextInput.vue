@@ -1,8 +1,5 @@
 <template>
   <div class="ui__textinput">
-    <label class="placeholder" :style="phStyles" @click="focus = true">
-      {{ placeholder }}
-    </label>
     <textarea
       v-if="type === 'textarea'"
       class="input"
@@ -10,6 +7,7 @@
       @input="handleInput($event.target.value)"
       @focus="focus = true"
       @blur="focus = false"
+      :placeholder="placeholder"
       :value="value"
     ></textarea>
     <input
@@ -21,6 +19,7 @@
       @input="handleInput($event.target.value)"
       @focus="focus = true"
       @blur="focus = false"
+      :placeholder="placeholder"
     />
   </div>
 </template>
@@ -42,19 +41,6 @@
           width: this.width,
           height: this.height
         }
-      },
-      phStyles() {
-        return this.focus || this.value.length > 0 ?
-        {
-          top: '-4px',
-          left: '8px',
-          'font-size': '8pt',
-          color: '#4A235A'
-        } : {
-          top: '18px',
-          left: '14px',
-          'font-size': '14pt'
-        };
       }
     }
   }
@@ -62,8 +48,7 @@
 
 <style scoped lang="scss">
   .ui__textinput {
-    margin-top: 10px;
-    padding-top: 10px;
+    margin-bottom: 10px;
     position: relative;
     .placeholder {
       position: absolute;
@@ -76,6 +61,8 @@
       border: 1px solid $appBorder;
       font-size: 14pt;
       outline: none;
+      font-family: 'Roboto', sans-serif;
+      font-size: 14pt;
     }
   }
 </style>

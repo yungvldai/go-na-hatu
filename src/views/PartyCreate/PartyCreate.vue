@@ -1,7 +1,11 @@
 <template>
   <div id="party__create">
-    <EditMap v-if="whatEdit === 'map'" :data="geoData" />
-    <EditInfo v-if="whatEdit === 'info'" :createData="createData" />
+    <transition name="slide-fade">
+      <EditMap v-if="whatEdit === 'map'" :data="geoData" />
+    </transition>
+    <transition name="slide-fade">
+      <EditInfo v-if="whatEdit === 'info'" :createData="createData" />
+    </transition>
   </div>
 </template>
 
@@ -16,12 +20,15 @@
     },
     data: () => ({
       geoData: {
-        location: null
+        location: [-1, -1]
       },
       createData: {
         weWant: '',
         weHave: '',
         description: '',
+        phone: '',
+        address: '',
+        aa: ''
       }
     }),
     mounted() {
@@ -41,8 +48,20 @@
 </script>
 
 <style scoped lang="scss">
+  .slide-fade-enter-active {
+    transition: all .8s ease-in-out;
+  }
+  .slide-fade-leave-active {
+    transition: all .8s ease-in-out;
+  }
+  .slide-fade-enter, .slide-fade-leave-to {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+
   #party__create {
     margin-top: 82px;
     padding: 10px;
+    padding-top: 0px;
   }
 </style>
