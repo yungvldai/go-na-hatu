@@ -13,7 +13,7 @@
         <ui-button
           align="flex-start"
           :border="false"
-          color="blue"
+          color="#261774"
           width="calc(100% - 24px)"
           :action="() => {}"
         >

@@ -33,17 +33,6 @@
 </script>
 
 <style scoped lang="scss">
-  .slide-fade-enter-active {
-    transition: all .8s ease-in-out;
-  }
-  .slide-fade-leave-active {
-    transition: all .8s ease-in-out;
-  }
-  .slide-fade-enter, .slide-fade-leave-to {
-    transform: translateX(20px);
-    opacity: 0;
-  }
-
   #party__list {
     margin-top: 82px;
   }
