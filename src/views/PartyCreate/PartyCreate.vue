@@ -54,7 +54,8 @@
         ownerName: '',
         price: null,
         peopleNow: null,
-        peopleMax: null
+        peopleMax: null,
+        vkLink: ''
       }
     }),
     mounted() {

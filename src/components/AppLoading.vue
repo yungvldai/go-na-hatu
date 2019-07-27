@@ -1,6 +1,6 @@
 <template>
   <div id="app__loading">
-    <img style="width: 30%;" src="/dance.gif" />
+    <img style="width: 30%;" src="/find_loc.gif" />
   </div>
 </template>
 

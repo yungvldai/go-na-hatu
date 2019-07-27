@@ -55,6 +55,11 @@
       v-model="createData.ownerName"
       placeholder="Имя"
       width="calc(50% - 28px)"
+      style="margin-top: 5px;"
+    />
+    <vk-input
+      v-model="createData.vkLink"
+      width="calc(100%)"
       style="margin-top: 5px; margin-bottom: 10px;"
     />
     <ui-button color="#4A235A" width="calc(100% - 28px)" :action="action">

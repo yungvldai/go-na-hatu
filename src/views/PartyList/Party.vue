@@ -2,7 +2,7 @@
   <div class="one__party">
     <div class="top__block">
       <div class="address__container">
-        <ui-addr v-ripple :id="party.id" :coords="party.location" :textAddr="party.address || 'Уточните позвонив'" />
+        <ui-addr v-ripple :id="party.id" :coords="party.location" :textAddr="party.address || 'Показать на карте'" />
       </div>
       <div class="options">
         <ui-adv-menu :item="party" />
@@ -43,6 +43,11 @@
       <ui-flex>
         <ui-phone :phone="party.phone"/>
         <span class="org__name">({{ party.orgName || 'Кто-то' }})</span>
+        <div v-if="party.vkLink">
+          <a :href="'https://vk.com/' + party.vkLink" target="_blank">
+            <img v-if="" src="/vklogo.png" style="vertical-align: -5px; margin-left: 10px; width: 25px;" />
+          </a>
+        </div>
       </ui-flex>
     </div>
     <div class="actions">

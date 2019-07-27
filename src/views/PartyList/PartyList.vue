@@ -73,6 +73,7 @@
 <style scoped lang="scss">
   #party__list {
     margin-top: 82px;
+    margin-bottom: 40px;
     #finder {
       position: fixed;
       left: 0px;

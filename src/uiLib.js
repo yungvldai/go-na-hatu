@@ -7,6 +7,7 @@ import UiPhone from '@/components/ui/UiPhone.vue';
 import UiProgressDiv from '@/components/ui/UiProgressDiv.vue';
 import UiAdvMenu from '@/components/ui/UiAdvMenu.vue';
 import UiTextInput from '@/components/ui/UiTextInput.vue';
+import VkInput from '@/components/ui/VkInput.vue';
 import Ripple from '@/components/ui/Ripple.js'
 import '@/components/ui/Ripple.css';
 
@@ -26,6 +27,7 @@ Vue.directive('click-outside', {
 
 Vue.directive('ripple', Ripple);
 Vue.component('ui-adv-menu', UiAdvMenu);
+Vue.component('vk-input', VkInput);
 Vue.component('ui-text-input', UiTextInput);
 Vue.component('ui-prog-div', UiProgressDiv);
 Vue.component('ui-button', UiButton);
