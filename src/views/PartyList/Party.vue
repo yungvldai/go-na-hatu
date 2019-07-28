@@ -51,7 +51,7 @@
       </ui-flex>
     </div>
     <div class="actions">
-      <ui-button color="#AA8807" width="calc(100% - 28px)" :action="() => {}">
+      <ui-button color="#4A235A" width="calc(100% - 28px)" :action="() => {}">
         <ui-icon indent="right" name="directions_run" />
         Я приду
       </ui-button>

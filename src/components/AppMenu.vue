@@ -30,6 +30,21 @@
       </i>
       <span class="item__text">Место</span>
     </div>
+    <div
+      v-if="userChoice === 'wait'"
+      v-ripple
+      class="to__item"
+      style="border-radius: 0 10px 10px 0;"
+      @click="() => {}"
+    >
+      <i
+        class="material-icons"
+        style="color: #FFB900;"
+      >
+        edit
+      </i>
+      <span class="item__text">Править</span>
+    </div>
     <div class="spacer" />
     <div
       v-if="userChoice === 'find'"
@@ -40,7 +55,7 @@
     >
       <i
         class="material-icons"
-        style="color: #1B4F72;"
+        style="color: #1B4F7;"
       >
         filter_none
       </i>
@@ -60,6 +75,21 @@
         edit
       </i>
       <span class="item__text">Информация</span>
+    </div>
+    <div
+      v-if="userChoice === 'wait'"
+      v-ripple
+      class="to__item"
+      style="border-radius: 0 10px 10px 0;"
+      @click="$store.commit('user/confirmSet', true)"
+    >
+      <i
+        class="material-icons"
+        style="color: red;"
+      >
+        close
+      </i>
+      <span class="item__text">Удалить</span>
     </div>
   </div>
 </template>

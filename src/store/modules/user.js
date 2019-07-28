@@ -2,7 +2,8 @@ export default {
   state: {
     choice: null,
     whatEdit: 'map',
-    scroll: {x: 0, y: 0}
+    scroll: {x: 0, y: 0},
+    confirm: false
     /*
       'find' - i`am finding party
       'create' - i`am organizing party
@@ -10,6 +11,9 @@ export default {
     */
   },
   mutations: {
+    'user/confirmSet': function(state, confirm) {
+      state.confirm = confirm;
+    },
     'user/saveScroll': function(state, scroll) {
       state.scroll = scroll;
     },
