@@ -1,12 +1,17 @@
 <template>
   <div id="app__content">
-    <router-view />
+    <router-view v-if="$store.state.app.isMobile"/>
+    <no-desktop v-else />
   </div>
 </template>
 
 <script>
-  export default {
+  import NoDesktop from '@/views/NoDesktop.vue';
 
+  export default {
+    components: {
+      NoDesktop
+    }
   }
 </script>
 

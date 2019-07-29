@@ -3,7 +3,8 @@ export default {
     loading: false,
     needToLoad: true,
     oneLocation: [0, 0],
-    oneId: null
+    oneId: null,
+    isMobile: false
   },
   mutations: {
     'app/loadOnlyOneLocation': function(state, {location, id}) {
@@ -16,6 +17,9 @@ export default {
     },
     'app/loading': function(state, value) {
       state.loading = value;
+    },
+    'app/setMobile': function(state, value) {
+      state.isMobile = value;
     }
   }
 }
