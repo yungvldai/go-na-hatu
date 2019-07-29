@@ -55,7 +55,7 @@
     >
       <i
         class="material-icons"
-        style="color: #1B4F7;"
+        style="color: #1B4F72;"
       >
         filter_none
       </i>

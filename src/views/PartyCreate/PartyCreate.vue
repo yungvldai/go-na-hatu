@@ -33,6 +33,7 @@
 
         api.post('api/parties/newParty', form)
         .then(response => {
+          this.$store.commit('owner/party', {} /*response.data.party*/);
           this.$router.push('/poll');
         })
         .catch(error => {

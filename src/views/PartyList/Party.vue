@@ -45,7 +45,7 @@
         <span class="org__name">({{ party.orgName || 'Кто-то' }})</span>
         <div v-if="party.vkLink">
           <a :href="'https://vk.com/' + party.vkLink" target="_blank">
-            <img v-if="" src="/vklogo.png" style="vertical-align: -5px; margin-left: 10px; width: 25px;" />
+            <img src="/vklogo.png" style="vertical-align: -5px; margin-left: 10px; width: 25px;" />
           </a>
         </div>
       </ui-flex>

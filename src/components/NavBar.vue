@@ -1,14 +1,21 @@
 <template>
   <div id="app__nav" @touchmove.prevent>
     <transition name="slide-fade">
-      <div v-if="userChoice" id="back__button" v-ripple @click="userChoice !== 'wait' ? $router.back() : moveWarn(() => $router.back())">
+      <div v-if="userChoice" id="back__button" v-ripple @click="$router.back()">
         <i class="material-icons" style="margin-left: 4px;">
           arrow_back_ios
         </i>
       </div>
     </transition>
+    <transition name="slide-fade">
+      <div v-if="$store.state.owner.party" id="party__button" v-ripple @click="$router.push('/poll')">
+        <i class="material-icons" style="margin-right: 4px; margin-left: 2px;">
+          home
+        </i>
+      </div>
+    </transition>
     <div id="nav__bar" :style="styles('bar')">
-      <div id="logo" :style="styles('logo')" @click="userChoice !== 'wait' ? $router.push('/') : moveWarn(() => $router.push(''))">
+      <div id="logo" :style="styles('logo')" @click="$router.push('/')">
         <img src="/logo_lol.png" style="width: 160px;"/>
       </div>
     </div>
@@ -16,20 +23,7 @@
       <app-menu v-if="userChoice"/>
     </transition>
     <transition name="fade-fast">
-      <div class="persistent" v-if="dialog || $store.state.user.confirm" @click="() => { dialog = false; $store.commit('user/confirmSet', false) }"/>
-    </transition>
-    <transition name="slide-fade-fast">
-      <div class="dialog" v-if="dialog && userChoice === 'wait'">
-        Если вы уйдете с этой страницы, Ваша туса автоматически закроется. Продолжить?
-        <div class="flex__container">
-          <ui-button color="red" :border="false" :action="yes" style="margin-right: 20px;">
-            Да
-          </ui-button>
-          <ui-button color="green" :border="false" :action="no">
-            Нет
-          </ui-button>
-        </div>
-      </div>
+      <div class="persistent" v-if="$store.state.user.confirm" @click="$store.commit('user/confirmSet', false)"/>
     </transition>
     <transition name="slide-fade-fast">
       <div class="dialog" v-if="$store.state.user.confirm && userChoice === 'wait'">
@@ -52,32 +46,20 @@
 
   export default {
     data: () => ({
-      dialog: false,
-      callbackOnYes: null
+      dialog: false
     }),
     components: {
       AppMenu
     },
     methods: {
       deleteParty() {
-        //TODO
+        this.$store.commit('owner/delete');
+        //API call
       },
       confirmDelete() {
         this.deleteParty();
         this.$router.push('/');
         this.$store.commit('user/confirmSet', false);
-      },
-      yes() {
-        this.deleteParty();
-        this.callbackOnYes();
-        this.dialog = false;
-      },
-      no() {
-        this.dialog = false;
-      },
-      moveWarn(callbackOnYes) {
-        this.callbackOnYes = callbackOnYes;
-        this.dialog = true;
       }
     },
     computed: {
@@ -175,6 +157,23 @@
     color: white;
     top: 15px;
     left: 14px;
+    z-index: 63;
+    padding: 4px;
+    padding-right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  #party__button {
+    font-size: 18pt;
+    position: fixed;
+    color: white;
+    top: 15px;
+    right: 14px;
     z-index: 63;
     padding: 4px;
     padding-right: 0px;
