@@ -1,6 +1,6 @@
 <template>
   <div id="not__found">
-    <img style="width: 50%;" src="/notfound.png" />
+    <span class="nf">404.</span>
     <span class="hint">Похоже, что тут уже все в кашу.</span>
     <ui-button color="#4A235A" :action="goToAll">
       <ui-icon indent="right" name="search" />
@@ -21,6 +21,10 @@
 
 <style lang="scss" scoped>
   #not__found {
+    .nf {
+      font-size: 80pt;
+      color: $appColor;
+    }
     .hint {
       color: $appColor;
       margin-bottom: 50px;
