@@ -1,12 +1,14 @@
 export default {
   methods: {
     niceTime(timestamp) {
+      if (!timestamp) return '';
       let utc = (new Date(timestamp)).toISOString();
       if (!utc) return '';
       let offsetHours = (new Date(utc)).getTimezoneOffset() / 60;
       return (parseInt(utc.split('T')[1].split(':')[0]) - offsetHours) + ':' + utc.split('T')[1].split(':')[1];
     },
     niceDate(timestamp) {
+      if (!timestamp) return '';
       let date = (new Date(timestamp)).toISOString().split('T')[0];
       let dateNow = (new Date()).toISOString().split('T')[0];
       if (date === dateNow) return 'Сегодня,';

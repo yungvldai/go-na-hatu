@@ -106,7 +106,6 @@
   }
   .one__party {
     .top__block {
-      margin-bottom: 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
