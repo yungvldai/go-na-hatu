@@ -11,14 +11,14 @@
     <ui-text-input
       type="textarea"
       v-model="createData.weHave"
-      placeholder="У нас есть"
+      placeholder="У нас есть (оставьте пустым, если ничего нет)"
       width="calc(100% - 25px)"
       height="100px"
     />
     <ui-text-input
       type="textarea"
       v-model="createData.weWant"
-      placeholder="От тебя хотим"
+      placeholder="От тебя хотим (оставьте пустым, если ничего не хотите)"
       width="calc(100% - 25px)"
       height="100px"
     />

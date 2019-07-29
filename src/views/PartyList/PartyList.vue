@@ -6,7 +6,8 @@
         <ui-icon name="expand_less" :style="controllerStyl"/>
       </div>
       <div id="content">
-        <span class="hint">Поиск и фильтры</span>
+        <span class="hint">Поиск и фильтры</span><br />
+        <span class="hint">( скоро будут )</span>
       </div>
     </div>
   </div>
@@ -19,7 +20,7 @@
       finderShown: false
     }),
     mounted() {
-      if (!this.userChoice) {
+      if (this.userChoice !== 'find') {
         this.$store.commit('user/setChoice', 'find');
       }
       this.$store.dispatch('party/get', () => {

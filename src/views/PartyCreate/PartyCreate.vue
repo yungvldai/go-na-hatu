@@ -31,13 +31,15 @@
         form.ownerName = form.ownerName.trim();
         form.location = [this.geoData.location.lng, this.geoData.location.lat];
 
+        this.$store.commit('app/loading', true);
         api.post('api/parties/newParty', form)
         .then(response => {
           this.$store.commit('owner/party', {} /*response.data.party*/);
           this.$router.push('/poll');
+          this.$store.commit('app/loading', false);
         })
         .catch(error => {
-
+          this.$store.commit('app/loading', false);
         });
 
       }

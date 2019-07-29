@@ -10,9 +10,20 @@
     data: () => ({
       socket: null
     }),
+    computed: {
+      userChoice() {
+        return this.$store.state.user.choice;
+      },
+      ownerParty() {
+        return this.$store.state.owner.party;
+      }
+    },
     mounted() {
-      if (!this.userChoice) {
+      if (this.userChoice !== 'wait') {
         this.$store.commit('user/setChoice', 'wait');
+      }
+      if (!this.ownerParty) {
+        this.$router.push('/');
       }
       //this.socket = io('ws://gonahatu.herokuapp.com');
     }

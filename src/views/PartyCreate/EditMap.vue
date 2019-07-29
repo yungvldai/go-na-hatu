@@ -5,8 +5,8 @@
       style="width: 100%; height: 100%;"
     />
     <div
-      id='geocoder'
-      class='geocoder'
+      id="geocoder"
+      class="geocoder"
     />
     <div id="map__pointer" :style="ptrStyles" />
     <div id="pointer__shadow" :style="ptrShadow" />
@@ -14,7 +14,7 @@
       <span class="hint">Где это будет?</span>
     </div>
     <div id="next__button" v-ripple @click="goEditInfo">
-      <ui-icon name="arrow_forward_ios" color="#4A235A" />
+      <ui-icon name="arrow_forward_ios" color="#4A235A" style="margin-left: 4px;" />
     </div>
   </div>
 </template>

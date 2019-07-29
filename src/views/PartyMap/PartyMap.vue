@@ -29,7 +29,7 @@
     },
     mounted() {
       this.$store.commit('app/loading', true);
-      if (!this.userChoice) {
+      if (this.userChoice !== 'find') {
         this.$store.commit('user/setChoice', 'find');
       }
       mapboxgl.accessToken = 'pk.eyJ1IjoieXVuZ3ZsZGFpIiwiYSI6ImNqeThkbWg2OTAzYnEzZHBud2wyZW9tYmsifQ.XpqSXSU5y7PW60b0TAQb9w';

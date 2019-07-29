@@ -42,7 +42,7 @@
     <div class="contact">
       <ui-flex>
         <ui-phone :phone="party.phone"/>
-        <span class="org__name">({{ party.orgName || 'Кто-то' }})</span>
+        <span class="org__name">({{ party.ownerName || 'Кто-то' }})</span>
         <div v-if="party.vkLink">
           <a :href="'https://vk.com/' + party.vkLink" target="_blank">
             <img src="/vklogo.png" style="vertical-align: -5px; margin-left: 10px; width: 25px;" />

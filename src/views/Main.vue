@@ -10,9 +10,9 @@
         Найти
       </ui-button>
       <div class="spacer" />
-      <ui-button class="button" color="orange" :action="goCreate">
+      <ui-button class="button" color="orange" :action="() => { ownerParty ? $router.push('/poll') : goCreate(); }">
         <ui-icon name="add" indent="right" />
-        Организовать
+        {{ ownerParty ? 'Перейти к моей тусе' : 'Организовать' }}
       </ui-button>
     </div>
   </div>
@@ -32,6 +32,11 @@
         this.$store.commit('user/setChoice', 'create');
         this.$store.commit('user/whatEdit', 'map');
         setTimeout(() => this.$router.push('/create'), 200);
+      }
+    },
+    computed: {
+      ownerParty() {
+        return this.$store.state.owner.party;
       }
     }
   }
