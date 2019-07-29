@@ -53,7 +53,11 @@
     },
     methods: {
       deleteParty() {
-        this.$store.commit('owner/delete');
+        let context = this;
+        this.$store.dispatch('party/delete', {callback: () => {
+          this.$store.commit('owner/delete');
+          this.$router.push('/');
+        }, id: context.ownerPartyId });
         //API call
       },
       confirmDelete() {
@@ -63,6 +67,9 @@
       }
     },
     computed: {
+      ownerPartyId() {
+        return this.$store.state.owner.party.id;
+      },
       userChoice() {
         return this.$store.state.user.choice;
       },

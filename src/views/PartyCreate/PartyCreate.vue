@@ -34,11 +34,13 @@
         this.$store.commit('app/loading', true);
         api.post('api/parties/newParty', form)
         .then(response => {
-          this.$store.commit('owner/party', {} /*response.data.party*/);
+          this.$store.commit('owner/party', response.data.party);
+          localStorage.setItem('party--id', response.data.party.id);
+          localStorage.setItem('private--key', response.data.partyId);
           this.$router.push('/poll');
           this.$store.commit('app/loading', false);
         })
-        .catch(error => {
+        .catch(() => {
           this.$store.commit('app/loading', false);
         });
 

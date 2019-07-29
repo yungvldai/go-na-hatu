@@ -11,7 +11,6 @@ import OneParty from '@/views/OneParty.vue'
 import Poll from '@/views/Poll.vue'
 import NotFound from '@/views/NotFound.vue'
 import About from '@/views/About.vue'
-import NoDesktop from '@/views/NoDesktop.vue'
 
 import store from '@/store/index'
 
@@ -53,11 +52,6 @@ const router = new Router({
       path: '/about',
       name: 'about',
       component: About
-    },
-    {
-      path: '/no-desktop',
-      name: 'no-desktop',
-      component: NoDesktop
     },
     {
       path: '*',

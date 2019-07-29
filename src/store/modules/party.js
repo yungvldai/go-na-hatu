@@ -41,6 +41,18 @@ export default {
       .finally(() => {
         commit('app/loading', false);
       })
+    },
+    'party/delete': function({commit}, {callback = () => {}, id}) {
+      commit('app/loading', true);
+      api.delete('/api/parties/party/' + id)
+      .then(() => {
+        callback();
+      })
+      .catch(() => {
+      })
+      .finally(() => {
+        commit('app/loading', false);
+      })
     }
   }
 }
