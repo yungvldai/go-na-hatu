@@ -11,3 +11,8 @@ npm install
 ```
 npm run serve
 ```
+
+### Unit tests
+```
+npm test
+```
