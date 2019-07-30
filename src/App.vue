@@ -38,5 +38,4 @@ export default {
   .enter-enter, .enter-leave-to {
     opacity: 0
   }
-
 </style>
