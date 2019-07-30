@@ -5,7 +5,25 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "jest"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+    },
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/(?!vue-awesome)"
+    ]
   },
   "dependencies": {
     "@mapbox/mapbox-gl-geocoder": "^4.4.1",
@@ -19,14 +37,21 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-flow": "^7.0.0",
     "@vue/cli-plugin-babel": "^3.9.0",
     "@vue/cli-plugin-eslint": "^3.9.0",
     "@vue/cli-service": "^3.9.0",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "babel-core": "^7.0.0-0",
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.8.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "jest": "^24.8.0",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
+    "vue-jest": "^3.0.4",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
