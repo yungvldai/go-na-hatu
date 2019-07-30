@@ -1,9 +1,28 @@
-import { mount } from '@vue/test-utils'
-import Component from '../components/ui/VkInput.vue'
+import { shallowMount, createLocalVue } from '@vue/test-utils';
+import Vuex from 'vuex';
+import App from '../App.vue';
 
-describe('Component', () => {
-  test('является экземпляром Vue', () => {
-    const wrapper = mount(Component)
-    expect(wrapper.isVueInstance()).toBeTruthy()
+const localVue = createLocalVue();
+
+localVue.use(Vuex);
+
+describe('App.vue', () => {
+  let state;
+  let store;
+
+  beforeEach(() => {
+    state = {
+      app: {
+        loading: true
+      }
+    }
+    store = new Vuex.Store({
+      state
+    });
   })
-})
+
+  it('is it Vue instance ?', () => {
+    const wrapper = shallowMount(App, { store, localVue })
+    expect(wrapper.isVueInstance());
+  });
+});

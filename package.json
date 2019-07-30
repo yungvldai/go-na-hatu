@@ -23,7 +23,9 @@
     },
     "transformIgnorePatterns": [
       "<rootDir>/node_modules/(?!vue-awesome)"
-    ]
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": ["**/*.{js,vue}", "!**/node_modules/**"]
   },
   "dependencies": {
     "@mapbox/mapbox-gl-geocoder": "^4.4.1",
