@@ -23,6 +23,6 @@ describe('App.vue', () => {
 
   it('is it Vue instance ?', () => {
     const wrapper = shallowMount(App, { store, localVue })
-    expect(wrappe.isVueInstance());
+    expect(wrapper.isVueInstance());
   });
 });
