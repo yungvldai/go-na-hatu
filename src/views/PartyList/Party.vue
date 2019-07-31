@@ -50,10 +50,16 @@
         </div>
       </ui-flex>
     </div>
-    <div class="actions">
-      <ui-button color="#4A235A" width="calc(100% - 28px)" :action="() => {}">
+    <div class="actions" v-if="!($store.state.owner.party || $store.state.go.party)">
+      <ui-button color="#4A235A" width="calc(100% - 28px)" :action="() => goTo(party.id)">
         <ui-icon indent="right" name="directions_run" />
         Я приду
+      </ui-button>
+    </div>
+    <div class="actions" v-if="$store.state.owner.party && $store.state.owner.party.id === party.id">
+      <ui-button color="#4A235A" width="calc(100% - 28px)" :action="goMy">
+        <ui-icon indent="right" name="home" />
+        Моя туса
       </ui-button>
     </div>
   </div>
@@ -64,7 +70,19 @@
 
   export default {
     props: ['party'],
-    mixins: [pretty]
+    mixins: [pretty],
+    methods: {
+      goMy() {
+        setTimeout(() => this.$router.push('/poll'), 200);
+      },
+      goTo(id) {
+        this.$store.commit('user/setChoice', 'go');
+        this.$store.commit('go/party', this.party);
+        localStorage.setItem('go--to', this.party.id);
+        //API call
+        setTimeout(() => this.$router.push('/go'), 200);
+      }
+    }
   }
 </script>
 

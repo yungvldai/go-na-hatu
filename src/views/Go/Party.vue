@@ -3,7 +3,7 @@
     <div class="one__party">
       <div class="top__block">
         <div class="address__container">
-          <ui-addr v-ripple :id="party.id" :coords="party.location" :textAddr="party.address || 'Показать на карте'" />
+          <ui-addr v-ripple :id="party.id" :coords="party.location" :textAddr="party.address || 'Показать на карте'" :customMethod="triggerOnMap" />
         </div>
         <div class="options">
           <ui-adv-menu :item="party" />
@@ -51,25 +51,8 @@
           </div>
         </ui-flex>
       </div>
-      <div class="actions" v-if="!($store.state.owner.party || $store.state.go.party)">
-        <ui-button color="#4A235A" width="calc(100% - 28px)" :action="() => goTo(party.id)">
-          <ui-icon indent="right" name="directions_run" />
-          Я приду
-        </ui-button>
-      </div>
-      <div class="actions" v-if="$store.state.owner.party && $store.state.owner.party.id === party.id">
-        <ui-button color="#4A235A" width="calc(100% - 28px)" :action="goMy">
-          <ui-icon indent="right" name="home" />
-          Моя туса
-        </ui-button>
-      </div>
     </div>
-    <div class="white__block">
-      <ui-button color="#4A235A" width="calc(100% - 28px)" :action="goToAll">
-        <ui-icon indent="right" name="filter_none" />
-        Посмотреть все
-      </ui-button>
-    </div>
+
   </div>
 </template>
 
@@ -78,33 +61,13 @@
 
   export default {
     mixins: [pretty],
+    props: ['partyOrNull', 'triggerOnMap'],
     mounted() {
-      if (!this.userChoice) {
-        this.$store.commit('user/setChoice', 'find');
-      }
-      this.$store.dispatch('oneparty/get', {id: this.partyId});
-    },
-    methods: {
-      goToAll() {
-        setTimeout(() => this.$router.push('/list'), 200);
-      },
-      goMy() {
-        setTimeout(() => this.$router.push('/poll'), 200);
-      },
-      goTo(id) {
-        this.$store.commit('user/setChoice', 'go');
-        this.$store.commit('go/party', this.party);
-        localStorage.setItem('go--to', this.party.id);
-        //API call
-        setTimeout(() => this.$router.push('/go'), 200);
-      }
+
     },
     computed: {
       party() {
-        return this.$store.state.party.oneParty;
-      },
-      partyId() {
-        return (this.$route.params || {}).id;
+        return this.partyOrNull || {};
       }
     }
   }
@@ -180,7 +143,7 @@
     font-size: 12pt;
     margin: 10px;
     border-radius: 10px;
-    margin-top: 82px;
+    margin-top: 10px;
     padding: 14px;
     box-shadow: 7px 7px 20px -16px rgba(0,0,0,0.75);
     background-color: white;

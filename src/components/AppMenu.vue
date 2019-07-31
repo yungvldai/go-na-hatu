@@ -45,7 +45,7 @@
       </i>
       <span class="item__text">Править</span>
     </div>
-    <div class="spacer" />
+    <div class="spacer" v-if="userChoice !== 'go'" />
     <div
       v-if="userChoice === 'find'"
       v-ripple
@@ -90,6 +90,21 @@
         close
       </i>
       <span class="item__text">Удалить</span>
+    </div>
+    <div
+      v-if="userChoice === 'go'"
+      v-ripple
+      class="to__item"
+      style="border-radius: 0 10px 10px 0; width: 100%"
+      @click="() => {}"
+    >
+      <i
+        class="material-icons"
+        style="color: red;"
+      >
+        close
+      </i>
+      <span class="item__text">Я не приду</span>
     </div>
   </div>
 </template>

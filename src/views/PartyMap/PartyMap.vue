@@ -25,9 +25,13 @@
       points: []
     }),
     beforeDestroy() {
-      this.mapInstance.remove();
+      this.mapInstance && this.mapInstance.remove();
     },
     mounted() {
+      if (this.$store.state.go.party) {
+        this.$router.push('/go');
+        return;
+      }
       this.$store.commit('app/loading', true);
       if (this.userChoice !== 'find') {
         this.$store.commit('user/setChoice', 'find');

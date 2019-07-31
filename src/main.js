@@ -5,6 +5,7 @@ import './static/app.css'
 import store from './store/index'
 import './uiLib.js'
 import mobileDetect from './services/mobile-detect.js';
+import restoreSession from './services/restorer.js';
 
 Vue.config.productionTip = false
 
@@ -13,6 +14,8 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+
+restoreSession();
 
 if (mobileDetect()) {
   store.commit('app/setMobile', true);

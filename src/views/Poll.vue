@@ -4,7 +4,7 @@
 </template>
 
 <script>
-  //import io from 'socket.io-client';
+  import io from 'socket.io-client';
 
   export default {
     data: () => ({
@@ -24,8 +24,9 @@
       }
       if (!this.ownerParty) {
         this.$router.push('/');
+        return;
       }
-      //this.socket = io('ws://gonahatu.herokuapp.com');
+      this.socket = io('ws://gonahatu.herokuapp.com');
     }
   }
 </script>

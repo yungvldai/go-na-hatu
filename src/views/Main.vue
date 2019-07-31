@@ -7,10 +7,10 @@
     <div class="flex__container">
       <ui-button class="button" color="green" :action="goFind">
         <ui-icon name="supervisor_account" indent="right" />
-        Найти
+        {{ goParty ? 'Я уже иду' : 'Найти' }}
       </ui-button>
-      <div class="spacer" />
-      <ui-button class="button" color="orange" :action="() => { ownerParty ? $router.push('/poll') : goCreate(); }">
+      <div class="spacer" v-if="!goParty" />
+      <ui-button v-if="!goParty" class="button" color="orange" :action="() => { ownerParty ? $router.push('/poll') : goCreate(); }">
         <ui-icon name="add" indent="right" />
         {{ ownerParty ? 'Перейти к моей тусе' : 'Организовать' }}
       </ui-button>
@@ -37,6 +37,9 @@
     computed: {
       ownerParty() {
         return this.$store.state.owner.party;
+      },
+      goParty() {
+        return this.$store.state.go.party;
       }
     }
   }

@@ -1,16 +1,23 @@
 <template>
   <div id="app__nav" @touchmove.prevent>
     <transition name="slide-fade">
-      <div v-if="userChoice" id="back__button" v-ripple @click="$router.back()">
+      <div v-if="userChoice && $store.state.app.isMobile" id="back__button" v-ripple @click="$router.back()">
         <i class="material-icons" style="margin-left: 4px;">
           arrow_back_ios
         </i>
       </div>
     </transition>
     <transition name="slide-fade">
-      <div v-if="$store.state.owner.party" id="party__button" v-ripple @click="$router.push('/poll')">
+      <div v-if="$store.state.owner.party && $store.state.app.isMobile" id="party__button" v-ripple @click="$router.push('/poll')">
         <i class="material-icons" style="margin-right: 4px; margin-left: 2px;">
           home
+        </i>
+      </div>
+    </transition>
+    <transition name="slide-fade">
+      <div v-if="$store.state.go.party && $store.state.app.isMobile" id="party__button" v-ripple @click="$router.push('/go')">
+        <i class="material-icons" style="margin-right: 6px; margin-left: 2px;">
+          near_me
         </i>
       </div>
     </transition>
@@ -57,8 +64,9 @@
         this.$store.dispatch('party/delete', {callback: () => {
           this.$store.commit('owner/delete');
           this.$router.push('/');
+          localStorage.removeItem('party--id');
+          localStorage.removeItem('private--key');
         }, id: context.ownerPartyId });
-        //API call
       },
       confirmDelete() {
         this.deleteParty();

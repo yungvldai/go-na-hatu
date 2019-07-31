@@ -20,6 +20,10 @@
       finderShown: false
     }),
     mounted() {
+      if (this.$store.state.go.party) {
+        this.$router.push('/go');
+        return;
+      }
       if (this.userChoice !== 'find') {
         this.$store.commit('user/setChoice', 'find');
       }

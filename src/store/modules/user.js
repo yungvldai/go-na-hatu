@@ -8,6 +8,7 @@ export default {
       'find' - i`am finding party
       'create' - i`am organizing party
       'wait' - i`am waiting for participants
+      'go' - i`am going to party
     */
   },
   mutations: {
