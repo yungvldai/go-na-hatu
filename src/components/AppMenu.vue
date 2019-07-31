@@ -96,7 +96,7 @@
       v-ripple
       class="to__item"
       style="border-radius: 0 10px 10px 0; width: 100%"
-      @click="() => {}"
+      @click="noGo"
     >
       <i
         class="material-icons"
@@ -114,6 +114,15 @@
     computed: {
       userChoice() {
         return this.$store.state.user.choice;
+      }
+    },
+    methods: {
+      noGo() {
+        localStorage.removeItem('go--to');
+        this.$store.commit('user/setChoice', null);
+        this.$store.commit('go/delete');
+        //API call
+        setTimeout(() => this.$router.push('/'), 200);
       }
     }
   }
