@@ -141,11 +141,8 @@
       margin-top: 10px;
     }
     font-size: 12pt;
-    margin: 10px;
-    border-radius: 10px;
     margin-top: 10px;
     padding: 14px;
-    box-shadow: 7px 7px 20px -16px rgba(0,0,0,0.75);
     background-color: white;
   }
 </style>

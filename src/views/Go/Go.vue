@@ -1,6 +1,6 @@
 <template>
   <div id="go__container">
-    <div id="go__map">
+    <div id="go__map__container">
       <div
         id="go--map"
         style="width: 100%; height: 100%;"
@@ -36,13 +36,12 @@
       }
     },
     mounted() {
-      if (this.userChoice !== 'go') {
-        this.$store.commit('user/setChoice', 'go');
-      }
       if (!this.goParty) {
-
         this.$router.push('/');
         return;
+      }
+      if (this.userChoice !== 'go') {
+        this.$store.commit('user/setChoice', 'go');
       }
       this.$store.commit('app/loading', true);
       mapboxgl.accessToken = 'pk.eyJ1IjoieXVuZ3ZsZGFpIiwiYSI6ImNqeThkbWg2OTAzYnEzZHBud2wyZW9tYmsifQ.XpqSXSU5y7PW60b0TAQb9w';
@@ -120,8 +119,12 @@
       width: 100%;
       height: 40%;
       overflow-y: scroll;
+      z-index: 29;
+      background-color: white;
     }
-    #go__map {
+    #go__map__container {
+      box-shadow: 7px 7px 20px -9px rgba(0,0,0,0.75);
+      z-index: 30;
       position: fixed;
       left: 0px;
       top: 0px;

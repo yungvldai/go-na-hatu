@@ -25,6 +25,10 @@
     },
     methods: {
       goFind() {
+        if (this.goParty) {
+          setTimeout(() => this.$router.push('/go'), 200);
+          return;
+        }
         this.$store.commit('user/setChoice', 'find');
         setTimeout(() => this.$router.push('/list'), 200);
       },

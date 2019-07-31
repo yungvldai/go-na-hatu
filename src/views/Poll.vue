@@ -19,6 +19,10 @@
       }
     },
     mounted() {
+      if (this.$store.state.go.party) {
+        this.$router.push('/go');
+        return;
+      }
       if (this.userChoice !== 'wait') {
         this.$store.commit('user/setChoice', 'wait');
       }

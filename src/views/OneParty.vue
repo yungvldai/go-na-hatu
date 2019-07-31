@@ -79,6 +79,11 @@
   export default {
     mixins: [pretty],
     mounted() {
+      if (this.$store.state.go.party) {
+        this.$router.push('/go');
+        return;
+      }
+
       if (!this.userChoice) {
         this.$store.commit('user/setChoice', 'find');
       }

@@ -68,11 +68,6 @@
         this.$router.push('/go');
         return;
       }
-      if (this.$store.state.owner.party) {
-        this.$router.push('/poll');
-        return;
-      }
-
       if (!this.userChoice) {
         this.$store.commit('user/setChoice', 'create');
       }
