@@ -42,9 +42,13 @@ export default {
         commit('app/loading', false);
       })
     },
-    'party/delete': function({commit}, {callback = () => {}, id}) {
+    'party/delete': function({commit}, {callback = () => {}, id, key}) {
       commit('app/loading', true);
-      api.delete('/api/parties/party/' + id)
+      api.delete('/api/parties/party/' + id, {
+        headers: {
+          'Access-Key': key
+        }
+      })
       .then(() => {
         callback();
       })

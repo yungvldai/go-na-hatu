@@ -1,5 +1,6 @@
 <template>
   <div class="ui__menu">
+    <input type="hidden" :value="'https://gonahatu.ru/party/' + item.id" ref="hiddenText"/>
     <i
       class="material-icons"
       style="user-select: none;"
@@ -15,7 +16,7 @@
           :border="false"
           color="#261774"
           width="calc(100% - 24px)"
-          :action="() => {}"
+          :action="share"
         >
           <ui-icon name="share" indent="right" />
           Поделиться
@@ -43,6 +44,14 @@
       show: false
     }),
     methods: {
+      share() {
+        this.$refs.hiddenText.setAttribute('type', 'text');
+        this.$refs.hiddenText.select();
+        document.execCommand('copy');
+        this.$refs.hiddenText.setAttribute('type', 'hidden');
+        window.getSelection().removeAllRanges();
+        this.$store.dispatch('app/snackOpen', 'Ссылка скопирована');
+      },
       closeMenu() {
         this.show = false;
       }

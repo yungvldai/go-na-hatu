@@ -4,9 +4,24 @@ export default {
     needToLoad: true,
     oneLocation: [0, 0],
     oneId: null,
-    isMobile: false
+    isMobile: false,
+    snackShow: false,
+    shackText: ''
+  },
+  actions: {
+    'app/snackOpen': function({commit}, text) {
+      commit('app/snack', {text: text, show: true});
+      setTimeout(() => commit('app/snack', {show: false}), 3000);
+    }
   },
   mutations: {
+    'app/snack': function(state, {show, text = ''}) {
+      state.snackShow = show;
+      state.snackText = text;
+    },
+
+
+
     'app/loadOnlyOneLocation': function(state, {location, id}) {
       state.needToLoad = false;
       state.oneLocation = location;

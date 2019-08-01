@@ -5,6 +5,7 @@
       <a href="https://github.com/yungvldai/go-na-hatu" class="link">Разработка</a>
     </div>
     <div class="flex__container">
+      <img src="/pivo.png" style="width: 50%; margin-bottom: 40px;" /><br />
       <ui-button class="button" color="green" :action="goFind">
         <ui-icon name="supervisor_account" indent="right" />
         {{ goParty ? 'Я уже иду' : 'Найти' }}

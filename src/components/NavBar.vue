@@ -23,7 +23,7 @@
       <app-menu v-if="userChoice"/>
     </transition>
     <transition name="fade-fast">
-      <div class="persistent" v-if="$store.state.user.confirm" @click="$store.commit('user/confirmSet', false)"/>
+      <div class="persistent" v-if="persistent" @click="closeDialog"/>
     </transition>
     <transition name="slide-fade-fast">
       <div class="dialog" v-if="$store.state.user.confirm && userChoice === 'wait'">
@@ -52,6 +52,9 @@
       AppMenu
     },
     methods: {
+      closeDialog() {
+        this.$store.commit('user/confirmSet', false);
+      },
       deleteParty() {
         let context = this;
         this.$store.dispatch('party/delete', {callback: () => {
@@ -59,7 +62,7 @@
           this.$router.push('/');
           localStorage.removeItem('party--id');
           localStorage.removeItem('private--key');
-        }, id: context.ownerPartyId });
+        }, id: context.ownerPartyId, key: localStorage.getItem('private--key') });
       },
       confirmDelete() {
         this.deleteParty();
@@ -68,6 +71,9 @@
       }
     },
     computed: {
+      persistent() {
+        return this.$store.state.user.confirm;
+      },
       ownerPartyId() {
         return this.$store.state.owner.party.id;
       },

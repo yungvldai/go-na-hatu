@@ -130,6 +130,7 @@
 
 <style scoped lang="scss">
   #app__menu {
+    overflow: hidden;
     width: 60%;
     height: 64px;
     background-color: white;

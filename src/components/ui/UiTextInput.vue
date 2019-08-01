@@ -8,23 +8,27 @@
       @blur="focus = false"
       :placeholder="placeholder"
       :value="value"
+      :readonly="readonly"
+      @click="($event) => {select ? $event.target.select() : () => {}}"
     ></textarea>
     <input
       v-else
       type="text"
       :value="value"
       class="input"
+      :readonly="readonly"
       @input="handleInput($event.target.value)"
       @focus="focus = true"
       @blur="focus = false"
       :placeholder="placeholder"
+      @click="($event) => {select ? $event.target.select() : () => {}}"
     />
   </div>
 </template>
 
 <script>
   export default {
-    props: ['width', 'value', 'type', 'placeholder', 'height'],
+    props: ['width', 'value', 'type', 'placeholder', 'height', 'readonly', 'select'],
     data: () => ({
       focus: false
     }),

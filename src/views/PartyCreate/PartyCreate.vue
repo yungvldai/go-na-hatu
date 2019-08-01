@@ -36,7 +36,7 @@
         .then(response => {
           this.$store.commit('owner/party', response.data.party);
           localStorage.setItem('party--id', response.data.party.id);
-          localStorage.setItem('private--key', response.data.partyId);
+          localStorage.setItem('private--key', response.data.userKey);
           this.$router.push('/poll');
           this.$store.commit('app/loading', false);
         })
