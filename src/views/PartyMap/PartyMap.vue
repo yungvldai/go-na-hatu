@@ -34,7 +34,8 @@
       }
       this.$store.commit('app/loading', true);
       if (this.userChoice !== 'find') {
-        this.$store.commit('user/setChoice', 'find');
+        this.$router.push('/list'); // очередной фикс отображения mapbox
+        return;
       }
       mapboxgl.accessToken = 'pk.eyJ1IjoieXVuZ3ZsZGFpIiwiYSI6ImNqeThkbWg2OTAzYnEzZHBud2wyZW9tYmsifQ.XpqSXSU5y7PW60b0TAQb9w';
       this.mapInstance = new mapboxgl.Map({
