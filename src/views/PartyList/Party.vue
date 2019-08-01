@@ -134,6 +134,7 @@
     }
     .desc {
       color: black;
+      overflow-x: hidden;
     }
     .date {
       color: grey;
@@ -141,6 +142,7 @@
       margin-bottom: 4px;
     }
     .we__have, .we__want, .controls, .contact, .actions {
+      overflow-x: hidden;
       position: relative;
       margin-top: 10px;
     }

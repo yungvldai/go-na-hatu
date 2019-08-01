@@ -1,8 +1,5 @@
 <template>
   <div id="about__page">
-    <div class="legends">
-      <span>© Иванов Влад, Сафонов Максим, 2019</span>
-    </div>
     <p>
       🤟 Web-приложение для поиска вечеринок и новых друзей "ГО НА ХАТУ".
     </p>
@@ -20,6 +17,9 @@
       <ui-icon indent="right" name="thumb_up_alt" />
       Понял, погнали
     </ui-button>
+    <div class="legends">
+      <span>© Иванов Влад, Сафонов Максим, 2019</span>
+    </div>
   </div>
 </template>
 
@@ -50,11 +50,9 @@
     padding-right: 20px;
     color: $appColor;
     .legends {
-      position: fixed;
       width: 100%;
-      bottom: 0px;
-      left: 0px;
-      padding-bottom: 8px;
+      margin-top: 40px;
+      margin-bottom: 40px;
       font-size: 10pt;
       text-align: center;
       color: grey !important;
