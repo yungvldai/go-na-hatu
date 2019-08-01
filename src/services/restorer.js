@@ -25,10 +25,12 @@ export default function() {
     api.get('/api/parties/party/' + goTo)
     .then(response => {
       store.commit('go/party', response.data);
-      router.push('/go');
+      router.push('/');
+      setTimeout(() => {
+        router.push('/go'); // это фикс некорректного отображения mapbox
+      }, 0);
     })
     .catch(() => {
-
     })
     .finally(() => {
       store.commit('app/loading', false);
