@@ -14,7 +14,7 @@ export default {
     }
   },
   actions: {
-    'oneparty/get': function({commit}, {id, callback = () => {}}) {
+    'oneparty/get': function({commit, dispatch}, {id, callback = () => {}}) {
       commit('app/loading', true);
       api.get('/api/parties/party/' + id)
       .then(response => {
@@ -22,13 +22,13 @@ export default {
         callback();
       })
       .catch(() => {
-
+        dispatch('app/snackOpen', 'Ошибка сети');
       })
       .finally(() => {
         commit('app/loading', false);
       })
     },
-    'party/get': function({commit}, callback = () => {}) {
+    'party/get': function({commit, dispatch}, callback = () => {}) {
       commit('app/loading', true);
       api.get('/api/parties/all')
       .then(response => {
@@ -36,13 +36,13 @@ export default {
         callback();
       })
       .catch(() => {
-
+        dispatch('app/snackOpen', 'Ошибка сети');
       })
       .finally(() => {
         commit('app/loading', false);
       })
     },
-    'party/delete': function({commit}, {callback = () => {}, id, key}) {
+    'party/delete': function({commit, dispatch}, {callback = () => {}, id, key}) {
       commit('app/loading', true);
       api.delete('/api/parties/party/' + id, {
         headers: {
@@ -53,6 +53,7 @@ export default {
         callback();
       })
       .catch(() => {
+        dispatch('app/snackOpen', 'Ошибка сети или неверный ключ для удаления');
       })
       .finally(() => {
         commit('app/loading', false);

@@ -49,6 +49,7 @@
       padding-top: 15px;
       padding-bottom: 15px;
       border-radius: 5px;
+      z-index: 100;
     }
     width: 100%;
     position: absolute;

@@ -41,6 +41,7 @@
           this.$store.commit('app/loading', false);
         })
         .catch(() => {
+          this.$store.dispatch('app/snackOpen', 'Ошибка создания тусы');
           this.$store.commit('app/loading', false);
         });
 
