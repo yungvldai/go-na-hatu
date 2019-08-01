@@ -75,7 +75,7 @@
       goMy() {
         setTimeout(() => this.$router.push('/poll'), 200);
       },
-      goTo(id) {
+      goTo() {
         this.$store.commit('user/setChoice', 'go');
         this.$store.commit('go/party', this.party);
         localStorage.setItem('go--to', this.party.id);
