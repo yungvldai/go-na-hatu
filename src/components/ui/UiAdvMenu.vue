@@ -27,7 +27,7 @@
           style="margin-top: 2px;"
           color="red"
           width="calc(100% - 24px)"
-          :action="() => {}"
+          :action="report"
         >
           <ui-icon name="report" indent="right" />
           Пожаловаться
@@ -51,6 +51,9 @@
         this.$refs.hiddenText.setAttribute('type', 'hidden');
         window.getSelection().removeAllRanges();
         this.$store.dispatch('app/snackOpen', 'Ссылка скопирована');
+      },
+      report() {
+        this.$store.dispatch('app/snackOpen', 'Жалоба принята');
       },
       closeMenu() {
         this.show = false;
