@@ -3,6 +3,7 @@
     <div class="legends">
       <span class="link" @click="$router.push('/about')">О проекте</span>
       <a href="https://github.com/yungvldai/go-na-hatu" class="link">Разработка</a>
+      <a href="mailto:support@gonahatu.ru" class="link">Поддержка</a>
     </div>
     <div class="flex__container">
       <img src="/pivo.png" style="width: 50%; margin-bottom: 40px;" /><br />
