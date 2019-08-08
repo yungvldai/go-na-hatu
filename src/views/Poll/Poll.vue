@@ -1,11 +1,9 @@
 <template>
   <div id="poll">
-    <transition name="slide-fade">
       <edit-party v-if="whatWait === 'edit'" :editData="editData" :action="makePut" />
-    </transition>
-    <transition name="slide-fade">
+
       <wait-party v-if="whatWait === 'wait'" />
-    </transition>
+
   </div>
 </template>
 
