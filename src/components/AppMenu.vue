@@ -35,7 +35,7 @@
       v-ripple
       class="to__item"
       style="border-radius: 0 10px 10px 0;"
-      @click="() => {}"
+      @click="$store.commit('user/whatWait', 'edit')"
     >
       <i
         class="material-icons"

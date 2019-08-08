@@ -42,6 +42,23 @@ export default {
         commit('app/loading', false);
       })
     },
+    'party/update': function({commit, dispatch}, {callback = () => {}, payload, key}) {
+      commit('app/loading', true);
+      api.put('/api/parties/party/' + payload.id, payload, {
+        headers: {
+          'Access-Key': key
+        }
+      })
+      .then(() => {
+        callback();
+      })
+      .catch(() => {
+        dispatch('app/snackOpen', 'Ошибка сети или неверный ключ для обновления');
+      })
+      .finally(() => {
+        commit('app/loading', false);
+      })
+    },
     'party/delete': function({commit, dispatch}, {callback = () => {}, id, key}) {
       commit('app/loading', true);
       api.delete('/api/parties/party/' + id, {

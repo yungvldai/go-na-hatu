@@ -2,6 +2,7 @@ export default {
   state: {
     choice: null,
     whatEdit: 'map',
+    whatWait: 'wait',
     scroll: {x: 0, y: 0},
     confirm: false
     /*
@@ -23,6 +24,9 @@ export default {
     },
     'user/whatEdit': function(state, what) {
       state.whatEdit = what;
+    },
+    'user/whatWait': function(state, what) {
+      state.whatWait = what;
     }
   }
 }
