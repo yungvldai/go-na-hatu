@@ -2,7 +2,7 @@
   <div id="party__map">
     <div
       id="map"
-      style="width: 100%; height: 100%;"
+      class="map__class"
     />
     <div
       id='geocoder'
@@ -33,10 +33,6 @@
         return;
       }
       this.$store.commit('app/loading', true);
-      if (this.userChoice !== 'find') {
-        this.$router.push('/list'); // очередной фикс отображения mapbox
-        return;
-      }
       mapboxgl.accessToken = 'pk.eyJ1IjoieXVuZ3ZsZGFpIiwiYSI6ImNqeThkbWg2OTAzYnEzZHBud2wyZW9tYmsifQ.XpqSXSU5y7PW60b0TAQb9w';
       this.mapInstance = new mapboxgl.Map({
         container: 'map',
@@ -234,5 +230,9 @@
     top: 0px;
     width: 100%;
     height: 100%;
+    .map__class {
+      width: 100%;
+      height: 100%;
+    }
   }
 </style>
