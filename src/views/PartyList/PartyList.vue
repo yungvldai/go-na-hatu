@@ -1,6 +1,12 @@
 <template>
   <div id="party__list">
     <one-party v-for="(party, index) in partyList" :key="`${party.id}@${index}`" :party="party" />
+    <div class="white__block" v-if="!($store.state.owner.party || $store.state.go.party)">
+      <ui-button color="#4A235A" width="calc(100% - 28px)" :action="goToCreate">
+        <ui-icon indent="right" name="add" />
+        Создать свою тусу
+      </ui-button>
+    </div>
     <div id="finder" :style="finderStyl">
       <div id="controller" @click="toggle">
         <ui-icon name="expand_less" :style="controllerStyl"/>
@@ -35,6 +41,9 @@
       });
     },
     methods: {
+      goToCreate() {
+        this.$router.push('/create');
+      },
       toggle() {
         this.finderShown = !this.finderShown;
       }
@@ -77,6 +86,15 @@
 
 <style scoped lang="scss">
   #party__list {
+    .white__block {
+      font-size: 12pt;
+      margin: 10px;
+      border-radius: 10px;
+      margin-top: 0px;
+      padding: 14px;
+      box-shadow: 7px 7px 20px -16px rgba(0,0,0,0.75);
+      background-color: white;
+    }
     margin-top: 82px;
     margin-bottom: 40px;
     #finder {
