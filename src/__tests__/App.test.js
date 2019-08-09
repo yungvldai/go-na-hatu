@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue, mount } from '@vue/test-utils';
+import { createLocalVue, mount } from '@vue/test-utils';
 import Vuex from 'vuex';
 import App from '../App.vue';
 import Ripple from '@/components/ui/Ripple.js'

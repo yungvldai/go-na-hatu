@@ -10,7 +10,7 @@ var Ripple = {
         setProps(Object.keys(binding.modifiers),props);
 
         el.addEventListener(props.event, function(event) {
-            rippler(event, el, binding.value);
+            rippler(event, el);
         });
 
         var bg = binding.value || Ripple.color || 'rgba(0, 0, 0, 0.35)';
@@ -101,7 +101,7 @@ var Ripple = {
 
                 // After removing event set position to target to it's original one
                 // Timeout it's needed to avoid jerky effect of ripple jumping out parent target
-                
+
             }
 
             if(event.type === 'mousedown') {
