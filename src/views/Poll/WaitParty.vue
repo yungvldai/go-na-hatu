@@ -1,5 +1,10 @@
 <template>
   <div id="wait__party">
+    <div class="emodji">
+      <div style="margin-bottom: 10px;">🍺🔥🎵🎉</div>
+      <div>Ждем тусовщиков и тусовщиц</div>
+      <div class="hint">Люди, изъявившие желание прийти к Вам<br> будут появляться тут</div>
+    </div>
     <div class="pulse__circle"/>
     <div class="pulse__circle2"/>
   </div>
@@ -17,6 +22,23 @@
 
 <style scoped lang="scss">
   #wait__party {
+    .emodji {
+      height: 20px;
+      position: fixed;
+      width: 100%;
+      text-align: center;
+      top: calc(50% - 10px);
+      left: 0px;
+      color: $appColor;
+      .hint {
+        margin-top: 100px;
+        color: gray;
+        font-size: 10pt;
+        font-style: italic;
+      }
+      z-index: 80;
+    }
+
     .pulse__circle {
       background-color: $appColor;
       opacity: 0.8;
@@ -27,6 +49,7 @@
       top: 50%;
       border-radius: 50%;
       animation: pulse 4s infinite ease-out;
+      z-index: 79;
     }
     .pulse__circle2 {
       background-color: $appColor;
@@ -39,6 +62,7 @@
       border-radius: 50%;
       animation: pulse 4s infinite ease-out;
       animation-delay: 2s;
+      z-index: 79;
     }
   }
   @keyframes pulse {
