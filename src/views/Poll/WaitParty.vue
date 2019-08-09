@@ -36,9 +36,8 @@
         font-size: 10pt;
         font-style: italic;
       }
-      z-index: 80;
+      z-index: 30;
     }
-
     .pulse__circle {
       background-color: $appColor;
       opacity: 0.8;
@@ -49,7 +48,7 @@
       top: 50%;
       border-radius: 50%;
       animation: pulse 4s infinite ease-out;
-      z-index: 79;
+      z-index: 29;
     }
     .pulse__circle2 {
       background-color: $appColor;
@@ -62,7 +61,7 @@
       border-radius: 50%;
       animation: pulse 4s infinite ease-out;
       animation-delay: 2s;
-      z-index: 79;
+      z-index: 29;
     }
   }
   @keyframes pulse {
