@@ -73,14 +73,7 @@
   export default {
     props: ['createData', 'action'],
     mounted() {
-      if (!this.userChoice) {
-        this.$store.commit('user/setChoice', 'create');
-      }
-    },
-    computed: {
-      userChoice() {
-        return this.$store.state.user.choice;
-      }
+      this.$store.commit('user/setChoice', 'create');
     }
   }
 </script>

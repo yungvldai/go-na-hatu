@@ -11,13 +11,7 @@
 </template>
 
 <script>
-  export default {
-    computed: {
-      userChoice() {
-        return this.$store.state.user.choice;
-      }
-    }
-  }
+  export default {}
 </script>
 
 <style scoped lang="scss">

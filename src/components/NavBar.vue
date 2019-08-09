@@ -101,7 +101,6 @@
 </script>
 
 <style scoped lang="scss">
-
   .persistent {
     background-color: rgba(0,0,0,0.5);
     top: 0px;
@@ -111,7 +110,6 @@
     position: fixed;
     z-index: 98;
   }
-
   .dialog {
     position: fixed;
     top: calc(50% - 60px);
@@ -128,7 +126,6 @@
       justify-content: flex-end;
     }
   }
-
   .fade-fast-enter-active {
     transition: all .3s ease-in-out;
   }
@@ -138,7 +135,6 @@
   .fade-fast-enter, .fade-fast-leave-to {
     opacity: 0;
   }
-
   .slide-fade-fast-enter-active {
     transition: all .3s ease-in-out;
   }
@@ -149,7 +145,6 @@
     transform: translateY(20px);
     opacity: 0;
   }
-
   .slide-fade-enter-active {
     transition: all .8s ease-in-out;
   }
@@ -160,11 +155,9 @@
     transform: translateY(20px);
     opacity: 0;
   }
-
   #logo {
     transition: all .8s ease 0.2s;
   }
-
   #back__button {
     font-size: 18pt;
     position: fixed;
@@ -181,7 +174,6 @@
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.05);
   }
-
   #party__button {
     font-size: 18pt;
     position: fixed;
@@ -198,7 +190,6 @@
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.05);
   }
-
   #nav__bar {
     width: 100%;
     background-color: $appColor;

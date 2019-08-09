@@ -51,9 +51,6 @@
           left: 'calc(50% - 3px)'
         };
       },
-      userChoice() {
-        return this.$store.state.user.choice;
-      },
       locationIsNotSet() {
         return this.data.location[0] === -1 && this.data.location[1] === -1;
       }
@@ -72,9 +69,7 @@
       }
     },
     mounted() {
-      if (!this.userChoice) {
-        this.$store.commit('user/setChoice', 'create');
-      }
+      this.$store.commit('user/setChoice', 'create');
       this.mapSelector = document.getElementById('edit--map');
       this.mapSelector.addEventListener('touchstart', this.setFingerOn);
       this.mapSelector.addEventListener('touchend', this.unsetFingerOn)

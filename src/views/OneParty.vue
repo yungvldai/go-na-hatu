@@ -83,9 +83,7 @@
         this.$router.push('/go');
         return;
       }
-      if (!this.userChoice) {
-        this.$store.commit('user/setChoice', 'find');
-      }
+      this.$store.commit('user/setChoice', 'find');
       this.$store.dispatch('oneparty/get', {id: this.partyId});
     },
     methods: {

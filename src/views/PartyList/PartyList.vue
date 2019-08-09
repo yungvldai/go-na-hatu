@@ -30,9 +30,7 @@
         this.$router.push('/go');
         return;
       }
-      if (this.userChoice !== 'find') {
-        this.$store.commit('user/setChoice', 'find');
-      }
+      this.$store.commit('user/setChoice', 'find');
       this.$store.dispatch('party/get', () => {
         let scroll = this.$store.state.user.scroll;
         setTimeout(() => {
@@ -76,9 +74,6 @@
       },
       partyList() {
         return this.$store.state.party.partyList;
-      },
-      userChoice() {
-        return this.$store.state.user.choice;
       }
     }
   }

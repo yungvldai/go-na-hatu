@@ -48,9 +48,6 @@
       }
     }),
     computed: {
-      userChoice() {
-        return this.$store.state.user.choice;
-      },
       ownerParty() {
         return this.$store.state.owner.party;
       },
@@ -63,9 +60,7 @@
         this.$router.push('/go');
         return;
       }
-      if (this.userChoice !== 'wait') {
-        this.$store.commit('user/setChoice', 'wait');
-      }
+      this.$store.commit('user/setChoice', 'wait');
       if (!this.ownerParty) {
         this.$router.push('/');
         return;

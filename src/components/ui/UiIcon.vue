@@ -1,5 +1,6 @@
 <template>
-  <i class="material-icons ui__icon"
+  <i
+    class="material-icons ui__icon"
     :style="(indent ? `margin-${indent}: 8px;` : '') + (color ? `color: ${color};` : '')"
   >
     {{ name }}

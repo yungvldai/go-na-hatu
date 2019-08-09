@@ -73,7 +73,6 @@
     transform: translateY(20px);
     opacity: 0;
   }
-
   .ui__menu {
     user-select: none;
     .advanced__menu {

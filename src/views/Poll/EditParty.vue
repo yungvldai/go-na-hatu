@@ -82,9 +82,6 @@
       });
     },
     computed: {
-      userChoice() {
-        return this.$store.state.user.choice;
-      },
       ownerParty() {
         return this.$store.state.owner.party;
       }

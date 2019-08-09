@@ -25,18 +25,11 @@
 <script>
   export default {
     mounted() {
-      if (this.userChoice) {
-        this.$store.commit('user/setChoice', null);
-      }
+      this.$store.commit('user/setChoice', null);
     },
     methods: {
       go() {
         this.$router.push('/');
-      }
-    },
-    computed: {
-      userChoice() {
-        return this.$store.state.user.choice;
       }
     }
   }

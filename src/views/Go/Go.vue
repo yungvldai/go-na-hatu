@@ -25,9 +25,6 @@
       OneParty
     },
     computed: {
-      userChoice() {
-        return this.$store.state.user.choice;
-      },
       goParty() {
         return this.$store.state.go.party;
       }
@@ -37,9 +34,7 @@
         this.$router.push('/');
         return;
       }
-      if (this.userChoice !== 'go') {
-        this.$store.commit('user/setChoice', 'go');
-      }
+      this.$store.commit('user/setChoice', 'go');
       this.$store.commit('app/loading', true);
       mapboxgl.accessToken = 'pk.eyJ1IjoieXVuZ3ZsZGFpIiwiYSI6ImNqeThkbWg2OTAzYnEzZHBud2wyZW9tYmsifQ.XpqSXSU5y7PW60b0TAQb9w';
       let mapObj = {

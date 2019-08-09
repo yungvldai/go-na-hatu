@@ -36,7 +36,6 @@
     opacity: 0;
     transform: translateY(100px);
   }
-
   #app__content {
     #snack {
       color: white;

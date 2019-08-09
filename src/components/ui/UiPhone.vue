@@ -33,17 +33,14 @@
     transform: translateX(-10px);
     opacity: 0;
   }
-
   .show__phone {
     text-decoration: underline;
     font-weight: bold;
   }
-
   .phone__link {
     font-weight: bold;
     color: $appColor;
   }
-
   .ui__phone {
     color: $appColor;
     display: inline-flex;

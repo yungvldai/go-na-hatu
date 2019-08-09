@@ -27,9 +27,6 @@
         default: 'center'
       }
     },
-    data: () => ({
-      //
-    }),
     methods: {
       makeAction() {
         setTimeout(this.action, 200);

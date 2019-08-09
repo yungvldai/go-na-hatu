@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="progress"
-    :style="`width: ${trueValue}%;`"
-  />
+  <div class="progress" :style="`width: ${trueValue}%;`" />
 </template>
 
 <script>

@@ -66,14 +66,10 @@
         this.$router.push('/go');
         return;
       }
-      if (!this.userChoice) {
-        this.$store.commit('user/setChoice', 'create');
-      }
+      this.$store.commit('user/setChoice', 'create');
+      this.$store.commit('user/whatEdit', 'map');
     },
     computed: {
-      userChoice() {
-        return this.$store.state.user.choice;
-      },
       whatEdit() {
         return this.$store.state.user.whatEdit;
       }
