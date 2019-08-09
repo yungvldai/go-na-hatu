@@ -13,7 +13,7 @@
   export default {
     methods: {
       goToAll() {
-        setTimeout(() => this.$router.push('/list'), 200);
+        this.$router.push('/list');
       }
     }
   }

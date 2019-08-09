@@ -72,7 +72,7 @@
         this.$router.push('/');
         return;
       }
-      this.socket = io('ws://gonahatu.herokuapp.com');
+      this.socket = io('wss://gonahatu.herokuapp.com');
     }
   }
 </script>

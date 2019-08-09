@@ -2,7 +2,7 @@
   <div
     class="ui__button"
     :style="styles"
-    @click.prevent="action"
+    @click.prevent="makeAction"
   >
     <slot />
   </div>
@@ -30,6 +30,11 @@
     data: () => ({
       //
     }),
+    methods: {
+      makeAction() {
+        setTimeout(this.action, 200);
+      }
+    },
     computed: {
       styles() {
         return {

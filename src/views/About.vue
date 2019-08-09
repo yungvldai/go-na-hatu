@@ -32,7 +32,7 @@
     },
     methods: {
       go() {
-        setTimeout(() => this.$router.push('/'), 200);
+        this.$router.push('/');
       }
     },
     computed: {

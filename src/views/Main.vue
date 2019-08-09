@@ -28,16 +28,16 @@
     methods: {
       goFind() {
         if (this.goParty) {
-          setTimeout(() => this.$router.push('/go'), 200);
+          this.$router.push('/go');
           return;
         }
         this.$store.commit('user/setChoice', 'find');
-        setTimeout(() => this.$router.push('/list'), 200);
+        this.$router.push('/list');
       },
       goCreate() {
         this.$store.commit('user/setChoice', 'create');
         this.$store.commit('user/whatEdit', 'map');
-        setTimeout(() => this.$router.push('/create'), 200);
+        this.$router.push('/create');
       }
     },
     computed: {

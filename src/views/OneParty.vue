@@ -91,17 +91,17 @@
     },
     methods: {
       goToAll() {
-        setTimeout(() => this.$router.push('/list'), 200);
+        this.$router.push('/list');
       },
       goMy() {
-        setTimeout(() => this.$router.push('/poll'), 200);
+        this.$router.push('/poll');
       },
       goTo() {
         this.$store.commit('user/setChoice', 'go');
         this.$store.commit('go/party', this.party);
         localStorage.setItem('go--to', this.party.id);
         //API call
-        setTimeout(() => this.$router.push('/go'), 200);
+        this.$router.push('/go');
       }
     },
     computed: {
