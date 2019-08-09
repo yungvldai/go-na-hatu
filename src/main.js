@@ -6,7 +6,6 @@ import store from './store/index'
 import './uiLib.js'
 import mobileDetect from './services/mobile-detect.js';
 import restoreSession from './services/restorer.js';
-//no serviceWorker
 
 Vue.config.productionTip = false
 
