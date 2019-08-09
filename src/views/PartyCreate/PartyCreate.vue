@@ -12,7 +12,6 @@
 <script>
   import EditInfo from './EditInfo.vue';
   import EditMap from './EditMap.vue'
-
   import { api } from '@/services/api.js';
 
   export default {
@@ -30,7 +29,6 @@
         form.address = form.address.trim();
         form.ownerName = form.ownerName.trim();
         form.location = [this.geoData.location.lng, this.geoData.location.lat];
-
         this.$store.commit('app/loading', true);
         api.post('api/parties/newParty', form)
         .then(response => {
@@ -44,7 +42,6 @@
           this.$store.dispatch('app/snackOpen', 'Ошибка создания тусы');
           this.$store.commit('app/loading', false);
         });
-
       }
     },
     data: () => ({
@@ -95,7 +92,6 @@
     transform: translateY(100px);
     opacity: 0;
   }
-
   #party__create {
     margin-top: 82px;
     padding: 10px;

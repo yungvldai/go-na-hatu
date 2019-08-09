@@ -1,9 +1,7 @@
 <template>
   <div id="poll">
-      <edit-party v-if="whatWait === 'edit'" :editData="editData" :action="makePut" />
-
-      <wait-party v-if="whatWait === 'wait'" />
-
+    <edit-party v-if="whatWait === 'edit'" :editData="editData" :action="makePut" />
+    <wait-party v-if="whatWait === 'wait'" />
   </div>
 </template>
 
@@ -88,7 +86,6 @@
     transform: translateY(100px);
     opacity: 0;
   }
-
   #poll {
     margin-top: 82px;
     padding: 10px;

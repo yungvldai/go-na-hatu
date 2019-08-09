@@ -1,13 +1,7 @@
 <template>
   <div id="party__map">
-    <div
-      id="map"
-      class="map__class"
-    />
-    <div
-      id='geocoder'
-      class='geocoder'
-    />
+    <div id="map" class="map__class" />
+    <div id="geocoder" class="geocoder" />
   </div>
 </template>
 
@@ -77,7 +71,6 @@
         }
         this.mapInstance.addImage('pulsing-dot', pulsingDot, { pixelRatio: 2 });
         this.loadPlaces();
-
         this.mapInstance.on('click', 'points', e => {
           let features = this.mapInstance.queryRenderedFeatures(e.point, { layers: ['points'] });
           var pointId = features[0].properties.id;
@@ -99,7 +92,6 @@
           clusterMaxZoom: 12,
           clusterRadius: 50
         });
-
         this.mapInstance.addLayer({
           id: "clusters",
           type: "circle",
@@ -127,7 +119,6 @@
             ]
           }
         });
-
         this.mapInstance.addLayer({
           id: "clusters_in",
           type: "circle",
@@ -155,7 +146,6 @@
             ]
           }
         });
-
         this.mapInstance.addLayer({
           id: "cluster-count",
           type: "symbol",
@@ -168,7 +158,6 @@
             "text-size": 16
           }
         });
-
         this.mapInstance.addLayer({
           id: "points",
           type: "symbol",
@@ -179,7 +168,6 @@
           }
         });
       },
-
       mapAddIcon(coords, id) {
         this.mapInstance.addLayer({
           "id": "points",

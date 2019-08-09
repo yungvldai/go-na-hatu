@@ -1,13 +1,7 @@
 <template>
   <div id="edit__map">
-    <div
-      id="edit--map"
-      style="width: 100%; height: 100%;"
-    />
-    <div
-      id="geocoder"
-      class="geocoder"
-    />
+    <div id="edit--map" style="width: 100%; height: 100%;" />
+    <div id="geocoder" class="geocoder" />
     <div id="map__pointer" :style="ptrStyles" />
     <div id="pointer__shadow" :style="ptrShadow" />
     <div id="info__box">
@@ -81,12 +75,9 @@
       if (!this.userChoice) {
         this.$store.commit('user/setChoice', 'create');
       }
-
       this.mapSelector = document.getElementById('edit--map');
-
       this.mapSelector.addEventListener('touchstart', this.setFingerOn);
       this.mapSelector.addEventListener('touchend', this.unsetFingerOn)
-
       mapboxgl.accessToken = 'pk.eyJ1IjoieXVuZ3ZsZGFpIiwiYSI6ImNqeThkbWg2OTAzYnEzZHBud2wyZW9tYmsifQ.XpqSXSU5y7PW60b0TAQb9w';
       let mapObj = {
         container: 'edit--map',

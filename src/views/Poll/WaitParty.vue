@@ -7,9 +7,6 @@
 
 <script>
   export default {
-    data: () => ({
-
-    }),
     computed: {
       userChoice() {
         return this.$store.state.user.choice;
@@ -44,7 +41,6 @@
       animation-delay: 2s;
     }
   }
-
   @keyframes pulse {
     from {
       width: 0px;

@@ -76,9 +76,6 @@
 <script>
   export default {
     props: ['editData', 'action'],
-    data: () => ({
-
-    }),
     mounted() {
       Object.keys(this.editData).forEach(x => {
         this.editData[x] = this.ownerParty[x];

@@ -1,10 +1,7 @@
 <template>
   <div id="go__container">
     <div id="go__map__container">
-      <div
-        id="go--map"
-        style="width: 100%; height: 100%;"
-      />
+      <div id="go--map" style="width: 100%; height: 100%;" />
     </div>
     <div id="go__party">
       <one-party :partyOrNull="goParty" :triggerOnMap="triggerOnMap" />
@@ -51,7 +48,6 @@
         zoom: 1
       };
       this.mapInstance = new mapboxgl.Map(mapObj);
-
       let language = new MapboxLanguage();
       this.mapInstance.addControl(language);
       this.geolocate = new mapboxgl.GeolocateControl({
@@ -62,16 +58,11 @@
       });
       this.mapInstance.addControl(this.geolocate, 'bottom-right');
       registerMapInstance(this.mapInstance);
-
-
       this.mapInstance.on('load', () => {
         this.mapInstance.addImage('pulsing-dot', pulsingDot, { pixelRatio: 2 });
-        //this.geolocate.trigger();
-
         this.mapAddIcon(this.goParty.location, this.goParty.id);
         this.$store.commit('app/loading', false);
         this.mapInstance.flyTo({center: this.goParty.location, zoom: 12});
-
       });
     },
     beforeDestroy() {
@@ -132,5 +123,4 @@
       height: 60%;
     }
   }
-
 </style>

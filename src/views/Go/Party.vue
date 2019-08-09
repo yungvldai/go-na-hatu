@@ -52,7 +52,6 @@
         </ui-flex>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -62,9 +61,6 @@
   export default {
     mixins: [pretty],
     props: ['partyOrNull', 'triggerOnMap'],
-    mounted() {
-
-    },
     computed: {
       party() {
         return this.partyOrNull || {};

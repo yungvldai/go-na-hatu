@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="one__party__container">
     <div class="one__party">
       <div class="top__block">
         <div class="address__container">
@@ -83,7 +83,6 @@
         this.$router.push('/go');
         return;
       }
-
       if (!this.userChoice) {
         this.$store.commit('user/setChoice', 'find');
       }
