@@ -15,7 +15,9 @@ export default function() {
       router.push('/poll');
     })
     .catch(() => {
-
+      localStorage.removeItem('party--id');
+      localStorage.removeItem('pivate--key');
+      store.dispatch('app/snackOpen', 'Ваша туса была удалена из-за нарушения правил.');
     })
     .finally(() => {
       store.commit('app/loading', false);
@@ -31,6 +33,8 @@ export default function() {
       }, 0);
     })
     .catch(() => {
+      localStorage.removeItem('go--to');
+      store.dispatch('app/snackOpen', 'Туса, на которую Вы шли, закончилась или была удалена.');
     })
     .finally(() => {
       store.commit('app/loading', false);
